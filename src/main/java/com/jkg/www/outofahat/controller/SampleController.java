@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class SampleController {
     private ResponseEntityMapper responseEntityMapper;
 
+    @Value("${test}")
+    private String test;
+
     @Autowired
     public SampleController(ResponseEntityMapper responseEntityMapper) {
         this.responseEntityMapper = responseEntityMapper;
@@ -31,7 +35,7 @@ public class SampleController {
             @ApiResponse(code = 500, message = "Error", response = GenericSingleResponse.class)})
     @ResponseBody
     public ResponseEntity<? extends IResponseMessage> getInfo() {
-        GenericSingleResponse response = GenericSingleResponse.success("woohooo");
+        GenericSingleResponse response = GenericSingleResponse.success(test);
         return responseEntityMapper.mapWithReqeustId(response);
     }
 }
