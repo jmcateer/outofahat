@@ -1,0 +1,83 @@
+group 'com.jkj.outofahat'
+version '1.0-SNAPSHOT'
+
+ext {
+    startClass='com.expedia.www.epc.onboarding.service.Starter'
+    buildType='sandbox'
+    depotInfo='none'
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'war'
+apply plugin: 'groovy'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.5.9.RELEASE"
+    }
+}
+
+dependencies {
+    compile (group: 'org.springframework.boot', name: 'spring-boot-starter-web', version:'1.5.9.RELEASE') {
+        exclude(module: 'spring-boot-starter-logging')
+        exclude (module: "logback-classic")
+        exclude(module: 'hibernate-validator')
+    }
+    compile (group: 'org.springframework.boot', name: 'spring-boot-actuator', version:'1.5.9.RELEASE') {
+        exclude (module: "logback-classic")
+    }
+    compile group: 'org.springframework.boot', name: 'spring-boot-actuator-docs', version: '1.5.9.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-configuration-processor', version: '1.5.9.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-log4j2', version: '1.5.9.RELEASE'
+
+
+
+
+    compile group: 'org.projectlombok', name: 'lombok', version: '1.16.18'
+
+    compile group: 'io.springfox', name: 'springfox-swagger2', version:'2.6.0'
+    compile group: 'io.springfox', name: 'springfox-swagger-ui', version:'2.6.0'
+
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile group: 'org.mockito', name: 'mockito-all', version:'1.10.19'
+}
+
+war {
+    manifest {
+        attributes("Application-Name": "${project.name}",
+                "Application-Version": "${project.version}",
+                "Application-Description": "${project.description}",
+                "Implementation-Title": "${project.name}",
+                //"Implementation-Version": "${grgit.head().id}",
+                "Implementation-Vendor": "Expedia",
+                "Built-By": System.getProperty("user.name"),
+                "Build-Jdk": System.getProperty("java.version"),
+                "Build-Time": new Date(),
+                "Build": "${buildType}",
+                //"Branch": "${grgit.branch.current.name}",
+                //"Depot": "${depotInfo}",
+                "mainClass": "${startClass}")
+    }
+}
+
+bootRun {
+    //dependsOn asciidoctor
+    configure {
+        systemProperty 'application.environment', 'dev'
+        systemProperty 'spring.profiles.active', 'dev'
+        systemProperty 'application.home', '.'
+    }
+    jvmArgs=["-Dproject.name=${project.name}", "-Dapplication.name=${project.name}", '-Dapplication.environment=dev', '-Dapplication.home=.', '-Xdebug', '-Xrunjdwp:server=y,transport=dt_socket,address=5005,suspend=n']
+}
