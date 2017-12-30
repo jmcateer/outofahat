@@ -5,19 +5,24 @@ import com.jkg.www.outofahat.valueobject.GenericSingleResponse;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.Assert;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @Validated
 @RestController
 @RequestMapping("api")
 public class SampleController {
+    Logger logger = LoggerFactory.getLogger(SampleController.class);
     private ResponseEntityMapper responseEntityMapper;
 
     @Value("${test}")
@@ -36,6 +41,13 @@ public class SampleController {
     @ResponseBody
     public ResponseEntity<? extends IResponseMessage> getInfo() {
         GenericSingleResponse response = GenericSingleResponse.success(test);
+        try {
+            Assert.isTrue(false, "doh");
+        } catch (Exception ex) {
+            logger.info("retrieving test:" + test, ex);
+            logger.warn("retrieving test:" + test, ex);
+            logger.error("retrieving test:" + test, ex);
+        }
         return responseEntityMapper.mapWithReqeustId(response);
     }
 }
