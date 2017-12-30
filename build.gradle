@@ -29,20 +29,18 @@ buildscript {
 }
 
 dependencies {
-    compile (group: 'org.springframework.boot', name: 'spring-boot-starter-web', version:'1.5.9.RELEASE') {
+    compile (group: 'org.springframework.boot', name: 'spring-boot-starter-web') {
         exclude(module: 'spring-boot-starter-logging')
         exclude (module: "logback-classic")
         exclude(module: 'hibernate-validator')
     }
-    compile (group: 'org.springframework.boot', name: 'spring-boot-actuator', version:'1.5.9.RELEASE') {
+    compile (group: 'org.springframework.boot', name: 'spring-boot-actuator') {
         exclude (module: "logback-classic")
     }
-    compile group: 'org.springframework.boot', name: 'spring-boot-actuator-docs', version: '1.5.9.RELEASE'
-    compile group: 'org.springframework.boot', name: 'spring-boot-configuration-processor', version: '1.5.9.RELEASE'
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-log4j2', version: '1.5.9.RELEASE'
-
-
-
+    compile group: 'org.springframework.boot', name: 'spring-boot-actuator-docs'
+    compile group: 'org.springframework.boot', name: 'spring-boot-configuration-processor'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-log4j2'
+    compile group: 'org.thymeleaf', name: 'thymeleaf-spring4'
 
     compile group: 'org.projectlombok', name: 'lombok', version: '1.16.18'
 
@@ -74,6 +72,7 @@ war {
 
 bootRun {
     //dependsOn asciidoctor
+    addResources = true
     configure {
         systemProperty 'application.environment', 'dev'
         systemProperty 'spring.profiles.active', 'dev'
