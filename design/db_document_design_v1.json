@@ -1,0 +1,983 @@
+
+{
+	"userId" = "someGUID",
+	"firstName" = "Harry",
+	"lastName" = "Potter",
+	"email" = "hp.onboarding@outlook.com",
+	"userName" = "harryPotter",
+	"password" = "Hogwarts!1",
+	"contacts" = [ // contact objects 
+		{
+			"id" = "harrypotter"
+			"firstName" = "Harry",
+			"lastName" = "Potter",
+			"email" = "hp.onboarding@outlook",
+			"phone" = "4254439728", // need to check format for sending texts (if possible)
+			"ineligibles" = [ // list of contact ids that are ineligible for this contact. ex. spouse.
+				"lkajslkj", "laksjdflka"
+			],
+			"previous" = [ // list of contact ids previously chosen
+				"jennyweasley", "la;sijdfoiaj"
+			]
+		},
+		{
+			"id" = "jennyweasley"
+			"firstName" = "Jenny",
+			"lastName" = "Weasley",
+			"email" = "jw.onboarding@outlook",
+			"phone" = "4254439731",
+			
+			"ineligibles" = [ 
+				"lkajslkj", "laksjdflka"
+			],
+			"previous" = [
+				"laksdvoa", "la;sijdfoiaj"
+			]
+		},
+		{
+			"id" = "ronweasley"
+			"firstName" = "Ron",
+			"lastName" = "Weasley",
+			"email" = "rw.onboarding@outlook",
+			"phone" = "4254439728",
+			
+			"ineligibles" = [ 
+				"lkajslkj", "laksjdflka"
+			],
+			"previous" = [
+				"jennyweasley", "la;sijdfoiaj"
+			]
+		},
+		{
+			"id" = "harrypotter"
+			"firstName" = "Harry",
+			"lastName" = "Potter",
+			"email" = "hp.onboarding@outlook",
+			"phone" = "4254439728", // need to check format for sending texts (if possible)
+			"ineligibles" = [ // list of contact ids that are ineligible for this contact. ex. spouse.
+				"lkajslkj", "laksjdflka"
+			],
+			"previous" = [ // list of contact ids previously chosen
+				"jennyweasley", "la;sijdfoiaj"
+			]
+		},
+		{
+			"id" = "jennyweasley"
+			"firstName" = "Jenny",
+			"lastName" = "Weasley",
+			"email" = "jw.onboarding@outlook",
+			"phone" = "4254439731",
+			
+			"ineligibles" = [ 
+				"lkajslkj", "laksjdflka"
+			],
+			"previous" = [
+				"laksdvoa", "la;sijdfoiaj"
+			]
+		},
+		{
+			"id" = "ronweasley"
+			"firstName" = "Ron",
+			"lastName" = "Weasley",
+			"email" = "rw.onboarding@outlook",
+			"phone" = "4254439728",
+			
+			"ineligibles" = [ 
+				"lkajslkj", "laksjdflka"
+			],
+			"previous" = [
+				"jennyweasley", "la;sijdfoiaj"
+			]
+		},
+		{
+			"id" = "harrypotter"
+			"firstName" = "Harry",
+			"lastName" = "Potter",
+			"email" = "hp.onboarding@outlook",
+			"phone" = "4254439728", // need to check format for sending texts (if possible)
+			"ineligibles" = [ // list of contact ids that are ineligible for this contact. ex. spouse.
+				"lkajslkj", "laksjdflka"
+			],
+			"previous" = [ // list of contact ids previously chosen
+				"jennyweasley", "la;sijdfoiaj"
+			]
+		},
+		{
+			"id" = "jennyweasley"
+			"firstName" = "Jenny",
+			"lastName" = "Weasley",
+			"email" = "jw.onboarding@outlook",
+			"phone" = "4254439731",
+			
+			"ineligibles" = [ 
+				"lkajslkj", "laksjdflka"
+			],
+			"previous" = [
+				"laksdvoa", "la;sijdfoiaj"
+			]
+		},
+		{
+			"id" = "ronweasley"
+			"firstName" = "Ron",
+			"lastName" = "Weasley",
+			"email" = "rw.onboarding@outlook",
+			"phone" = "4254439728",
+			
+			"ineligibles" = [ 
+				"lkajslkj", "laksjdflka"
+			],
+			"previous" = [
+				"jennyweasley", "la;sijdfoiaj"
+			]
+		},
+		{
+			"id" = "harrypotter"
+			"firstName" = "Harry",
+			"lastName" = "Potter",
+			"email" = "hp.onboarding@outlook",
+			"phone" = "4254439728", // need to check format for sending texts (if possible)
+			"ineligibles" = [ // list of contact ids that are ineligible for this contact. ex. spouse.
+				"lkajslkj", "laksjdflka"
+			],
+			"previous" = [ // list of contact ids previously chosen
+				"jennyweasley", "la;sijdfoiaj"
+			]
+		},
+		{
+			"id" = "jennyweasley"
+			"firstName" = "Jenny",
+			"lastName" = "Weasley",
+			"email" = "jw.onboarding@outlook",
+			"phone" = "4254439731",
+			
+			"ineligibles" = [ 
+				"lkajslkj", "laksjdflka"
+			],
+			"previous" = [
+				"laksdvoa", "la;sijdfoiaj"
+			]
+		},
+		{
+			"id" = "ronweasley"
+			"firstName" = "Ron",
+			"lastName" = "Weasley",
+			"email" = "rw.onboarding@outlook",
+			"phone" = "4254439728",
+			
+			"ineligibles" = [ 
+				"lkajslkj", "laksjdflka"
+			],
+			"previous" = [
+				"jennyweasley", "la;sijdfoiaj"
+			]
+		},
+		{
+			"id" = "harrypotter"
+			"firstName" = "Harry",
+			"lastName" = "Potter",
+			"email" = "hp.onboarding@outlook",
+			"phone" = "4254439728", // need to check format for sending texts (if possible)
+			"ineligibles" = [ // list of contact ids that are ineligible for this contact. ex. spouse.
+				"lkajslkj", "laksjdflka"
+			],
+			"previous" = [ // list of contact ids previously chosen
+				"jennyweasley", "la;sijdfoiaj"
+			]
+		},
+		{
+			"id" = "jennyweasley"
+			"firstName" = "Jenny",
+			"lastName" = "Weasley",
+			"email" = "jw.onboarding@outlook",
+			"phone" = "4254439731",
+			
+			"ineligibles" = [ 
+				"lkajslkj", "laksjdflka"
+			],
+			"previous" = [
+				"laksdvoa", "la;sijdfoiaj"
+			]
+		},
+		{
+			"id" = "ronweasley"
+			"firstName" = "Ron",
+			"lastName" = "Weasley",
+			"email" = "rw.onboarding@outlook",
+			"phone" = "4254439728",
+			
+			"ineligibles" = [ 
+				"lkajslkj", "laksjdflka"
+			],
+			"previous" = [
+				"jennyweasley", "la;sijdfoiaj"
+			]
+		},
+		{
+			"id" = "harrypotter"
+			"firstName" = "Harry",
+			"lastName" = "Potter",
+			"email" = "hp.onboarding@outlook",
+			"phone" = "4254439728", // need to check format for sending texts (if possible)
+			"ineligibles" = [ // list of contact ids that are ineligible for this contact. ex. spouse.
+				"lkajslkj", "laksjdflka"
+			],
+			"previous" = [ // list of contact ids previously chosen
+				"jennyweasley", "la;sijdfoiaj"
+			]
+		},
+		{
+			"id" = "jennyweasley"
+			"firstName" = "Jenny",
+			"lastName" = "Weasley",
+			"email" = "jw.onboarding@outlook",
+			"phone" = "4254439731",
+			
+			"ineligibles" = [ 
+				"lkajslkj", "laksjdflka"
+			],
+			"previous" = [
+				"laksdvoa", "la;sijdfoiaj"
+			]
+		},
+		{
+			"id" = "ronweasley"
+			"firstName" = "Ron",
+			"lastName" = "Weasley",
+			"email" = "rw.onboarding@outlook",
+			"phone" = "4254439728",
+			
+			"ineligibles" = [ 
+				"lkajslkj", "laksjdflka"
+			],
+			"previous" = [
+				"jennyweasley", "la;sijdfoiaj"
+			]
+		},
+		{
+			"id" = "harrypotter"
+			"firstName" = "Harry",
+			"lastName" = "Potter",
+			"email" = "hp.onboarding@outlook",
+			"phone" = "4254439728", // need to check format for sending texts (if possible)
+			"ineligibles" = [ // list of contact ids that are ineligible for this contact. ex. spouse.
+				"lkajslkj", "laksjdflka"
+			],
+			"previous" = [ // list of contact ids previously chosen
+				"jennyweasley", "la;sijdfoiaj"
+			]
+		},
+		{
+			"id" = "jennyweasley"
+			"firstName" = "Jenny",
+			"lastName" = "Weasley",
+			"email" = "jw.onboarding@outlook",
+			"phone" = "4254439731",
+			
+			"ineligibles" = [ 
+				"lkajslkj", "laksjdflka"
+			],
+			"previous" = [
+				"laksdvoa", "la;sijdfoiaj"
+			]
+		},
+		{
+			"id" = "ronweasley"
+			"firstName" = "Ron",
+			"lastName" = "Weasley",
+			"email" = "rw.onboarding@outlook",
+			"phone" = "4254439728",
+			
+			"ineligibles" = [ 
+				"lkajslkj", "laksjdflka"
+			],
+			"previous" = [
+				"jennyweasley", "la;sijdfoiaj"
+			]
+		},
+		{
+			"id" = "harrypotter"
+			"firstName" = "Harry",
+			"lastName" = "Potter",
+			"email" = "hp.onboarding@outlook",
+			"phone" = "4254439728", // need to check format for sending texts (if possible)
+			"ineligibles" = [ // list of contact ids that are ineligible for this contact. ex. spouse.
+				"lkajslkj", "laksjdflka"
+			],
+			"previous" = [ // list of contact ids previously chosen
+				"jennyweasley", "la;sijdfoiaj"
+			]
+		},
+		{
+			"id" = "jennyweasley"
+			"firstName" = "Jenny",
+			"lastName" = "Weasley",
+			"email" = "jw.onboarding@outlook",
+			"phone" = "4254439731",
+			
+			"ineligibles" = [ 
+				"lkajslkj", "laksjdflka"
+			],
+			"previous" = [
+				"laksdvoa", "la;sijdfoiaj"
+			]
+		},
+		{
+			"id" = "ronweasley"
+			"firstName" = "Ron",
+			"lastName" = "Weasley",
+			"email" = "rw.onboarding@outlook",
+			"phone" = "4254439728",
+			
+			"ineligibles" = [ 
+				"lkajslkj", "laksjdflka"
+			],
+			"previous" = [
+				"jennyweasley", "la;sijdfoiaj"
+			]
+		},
+		{
+			"id" = "harrypotter"
+			"firstName" = "Harry",
+			"lastName" = "Potter",
+			"email" = "hp.onboarding@outlook",
+			"phone" = "4254439728", // need to check format for sending texts (if possible)
+			"ineligibles" = [ // list of contact ids that are ineligible for this contact. ex. spouse.
+				"lkajslkj", "laksjdflka"
+			],
+			"previous" = [ // list of contact ids previously chosen
+				"jennyweasley", "la;sijdfoiaj"
+			]
+		},
+		{
+			"id" = "jennyweasley"
+			"firstName" = "Jenny",
+			"lastName" = "Weasley",
+			"email" = "jw.onboarding@outlook",
+			"phone" = "4254439731",
+			
+			"ineligibles" = [ 
+				"lkajslkj", "laksjdflka"
+			],
+			"previous" = [
+				"laksdvoa", "la;sijdfoiaj"
+			]
+		},
+		{
+			"id" = "ronweasley"
+			"firstName" = "Ron",
+			"lastName" = "Weasley",
+			"email" = "rw.onboarding@outlook",
+			"phone" = "4254439728",
+			
+			"ineligibles" = [ 
+				"lkajslkj", "laksjdflka"
+			],
+			"previous" = [
+				"jennyweasley", "la;sijdfoiaj"
+			]
+		},
+		{
+			"id" = "harrypotter"
+			"firstName" = "Harry",
+			"lastName" = "Potter",
+			"email" = "hp.onboarding@outlook",
+			"phone" = "4254439728", // need to check format for sending texts (if possible)
+			"ineligibles" = [ // list of contact ids that are ineligible for this contact. ex. spouse.
+				"lkajslkj", "laksjdflka"
+			],
+			"previous" = [ // list of contact ids previously chosen
+				"jennyweasley", "la;sijdfoiaj"
+			]
+		},
+		{
+			"id" = "jennyweasley"
+			"firstName" = "Jenny",
+			"lastName" = "Weasley",
+			"email" = "jw.onboarding@outlook",
+			"phone" = "4254439731",
+			
+			"ineligibles" = [ 
+				"lkajslkj", "laksjdflka"
+			],
+			"previous" = [
+				"laksdvoa", "la;sijdfoiaj"
+			]
+		},
+		{
+			"id" = "ronweasley"
+			"firstName" = "Ron",
+			"lastName" = "Weasley",
+			"email" = "rw.onboarding@outlook",
+			"phone" = "4254439728",
+			
+			"ineligibles" = [ 
+				"lkajslkj", "laksjdflka"
+			],
+			"previous" = [
+				"jennyweasley", "la;sijdfoiaj"
+			]
+		}
+	],
+	"exchanges" = [
+		{
+			"name" = "ornament exchange",
+			"createDate" = "date object",
+			"eventDate" = "date object",
+			"mapping" = {
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter"
+			}
+		},
+		{
+			"name" = "ornament exchange",
+			"createDate" = "date object",
+			"eventDate" = "date object",
+			"mapping" = {
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter"
+			}
+		},
+		{
+			"name" = "ornament exchange",
+			"createDate" = "date object",
+			"eventDate" = "date object",
+			"mapping" = {
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter"
+			}
+		},
+		{
+			"name" = "ornament exchange",
+			"createDate" = "date object",
+			"eventDate" = "date object",
+			"mapping" = {
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter"
+			}
+		},
+		{
+			"name" = "ornament exchange",
+			"createDate" = "date object",
+			"eventDate" = "date object",
+			"mapping" = {
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter"
+			}
+		},
+		{
+			"name" = "ornament exchange",
+			"createDate" = "date object",
+			"eventDate" = "date object",
+			"mapping" = {
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter"
+			}
+		},
+		{
+			"name" = "ornament exchange",
+			"createDate" = "date object",
+			"eventDate" = "date object",
+			"mapping" = {
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter"
+			}
+		},
+		{
+			"name" = "ornament exchange",
+			"createDate" = "date object",
+			"eventDate" = "date object",
+			"mapping" = {
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter"
+			}
+		},
+		{
+			"name" = "ornament exchange",
+			"createDate" = "date object",
+			"eventDate" = "date object",
+			"mapping" = {
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter"
+			}
+		},
+		{
+			"name" = "ornament exchange",
+			"createDate" = "date object",
+			"eventDate" = "date object",
+			"mapping" = {
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter"
+			}
+		},
+		{
+			"name" = "ornament exchange",
+			"createDate" = "date object",
+			"eventDate" = "date object",
+			"mapping" = {
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter"
+			}
+		},
+		{
+			"name" = "ornament exchange",
+			"createDate" = "date object",
+			"eventDate" = "date object",
+			"mapping" = {
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter"
+			}
+		},
+		{
+			"name" = "ornament exchange",
+			"createDate" = "date object",
+			"eventDate" = "date object",
+			"mapping" = {
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter"
+			}
+		},
+		{
+			"name" = "ornament exchange",
+			"createDate" = "date object",
+			"eventDate" = "date object",
+			"mapping" = {
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter"
+			}
+		},
+		{
+			"name" = "ornament exchange",
+			"createDate" = "date object",
+			"eventDate" = "date object",
+			"mapping" = {
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter"
+			}
+		},
+		{
+			"name" = "ornament exchange",
+			"createDate" = "date object",
+			"eventDate" = "date object",
+			"mapping" = {
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter"
+			}
+		},
+		{
+			"name" = "ornament exchange",
+			"createDate" = "date object",
+			"eventDate" = "date object",
+			"mapping" = {
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter"
+			}
+		},
+		{
+			"name" = "ornament exchange",
+			"createDate" = "date object",
+			"eventDate" = "date object",
+			"mapping" = {
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter"
+			}
+		},
+		{
+			"name" = "ornament exchange",
+			"createDate" = "date object",
+			"eventDate" = "date object",
+			"mapping" = {
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter"
+			}
+		},
+		{
+			"name" = "ornament exchange",
+			"createDate" = "date object",
+			"eventDate" = "date object",
+			"mapping" = {
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter",
+				"jennyweasley" = "ronweasley",
+				"harrypotter" = "jennyweasley",
+				"ronweasley" = "harrypotter"
+			}
+		}
+	]
+}

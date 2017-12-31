@@ -1,4 +1,4 @@
-package com.jkg.www.outofahat.init;
+package com.jkg.www.outofahat;
 
 import com.fasterxml.classmate.TypeResolver;
 import io.swagger.annotations.ApiOperation;
