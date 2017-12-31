@@ -1,0 +1,5 @@
+swagger:
+  version: "1.0"
+  title: "Out of a Hat"
+  description: "RESTful endpoints for Out of a Hat"
+  email: "jmcateer@live.com"
