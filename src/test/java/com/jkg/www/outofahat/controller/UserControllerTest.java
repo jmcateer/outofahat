@@ -1,9 +1,9 @@
 package com.jkg.www.outofahat.controller;
 
 import com.jkg.www.outofahat.service.IUserService;
-import com.jkg.www.outofahat.valueobject.ErrorDetails;
-import com.jkg.www.outofahat.valueobject.NewUserRequest;
-import com.jkg.www.outofahat.valueobject.NewUserResponse;
+import com.jkg.www.outofahat.service.valueobject.ErrorDetails;
+import com.jkg.www.outofahat.service.valueobject.NewUserRequest;
+import com.jkg.www.outofahat.service.valueobject.NewUserResponse;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;

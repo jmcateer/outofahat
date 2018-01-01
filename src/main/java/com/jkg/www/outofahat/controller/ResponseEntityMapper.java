@@ -1,6 +1,6 @@
 package com.jkg.www.outofahat.controller;
 
-import com.jkg.www.outofahat.valueobject.IResponseMessage;
+import com.jkg.www.outofahat.service.valueobject.IResponseMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
