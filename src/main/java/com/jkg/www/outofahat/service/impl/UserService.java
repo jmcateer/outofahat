@@ -1,9 +1,8 @@
 package com.jkg.www.outofahat.service.impl;
 
 import com.jkg.www.outofahat.service.IUserService;
-import com.jkg.www.outofahat.valueobject.GenericSingleResponse;
-import com.jkg.www.outofahat.valueobject.NewUserRequest;
-import com.jkg.www.outofahat.valueobject.NewUserResponse;
+import com.jkg.www.outofahat.service.valueobject.NewUserRequest;
+import com.jkg.www.outofahat.service.valueobject.NewUserResponse;
 import org.springframework.stereotype.Service;
 
 @Service

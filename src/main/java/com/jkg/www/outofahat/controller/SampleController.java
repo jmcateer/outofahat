@@ -1,7 +1,7 @@
 package com.jkg.www.outofahat.controller;
 
-import com.jkg.www.outofahat.valueobject.IResponseMessage;
-import com.jkg.www.outofahat.valueobject.GenericSingleResponse;
+import com.jkg.www.outofahat.service.valueobject.IResponseMessage;
+import com.jkg.www.outofahat.service.valueobject.GenericSingleResponse;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;

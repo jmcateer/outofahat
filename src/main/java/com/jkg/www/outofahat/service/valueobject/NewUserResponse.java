@@ -1,4 +1,4 @@
-package com.jkg.www.outofahat.valueobject;
+package com.jkg.www.outofahat.service.valueobject;
 
 import lombok.Getter;
 
