@@ -1,0 +1,19 @@
+apply plugin: 'jacoco'
+
+test {
+    jacoco {
+        dumpOnExit = true
+    }
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        csv.enabled true
+    }
+}
+
+jacocoTestReport.group = 'Code Coverage'
+jacocoTestReport.description = 'Run code converage for all modules and all custom tasks'
+
+check.dependsOn jacocoTestReport
