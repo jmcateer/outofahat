@@ -5,7 +5,7 @@ import lombok.Getter;
 @Getter
 public class NewUserResponse implements IResponseMessage {
     private boolean successful;
-    private String userId;
+    private String value;
     private ErrorDetails errorDetails;
 
     public static NewUserResponse success(String userId) {
@@ -17,16 +17,12 @@ public class NewUserResponse implements IResponseMessage {
     }
 
     private NewUserResponse(String userId) {
-        this.userId = userId;
+        this.value = userId;
         this.successful = true;
     }
 
     private NewUserResponse(ErrorDetails errorDetails) {
         this.errorDetails = errorDetails;
         this.successful = false;
-    }
-
-    public String getValue() {
-        return userId;
     }
 }

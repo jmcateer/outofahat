@@ -5,10 +5,12 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import org.mongodb.morphia.annotations.Embedded;
 
 import java.time.LocalDate;
 import java.util.Map;
 
+@Embedded
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @AllArgsConstructor
