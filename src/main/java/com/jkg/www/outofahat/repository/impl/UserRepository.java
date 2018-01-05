@@ -1,6 +1,6 @@
 package com.jkg.www.outofahat.repository.impl;
 
-import com.jkg.www.outofahat.database.OutOfAHatInfoConnector;
+import com.jkg.www.outofahat.database.IOutOfAHatInfoConnector;
 import com.jkg.www.outofahat.database.dbObjects.OutOfAHatInfoDbo;
 import com.jkg.www.outofahat.repository.IUserRepository;
 import com.jkg.www.outofahat.service.valueobject.NewUserRequest;
@@ -9,15 +9,15 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class UserRepository implements IUserRepository {
-
-    private OutOfAHatInfoConnector outOfAHatInfoConnector;
+    private IOutOfAHatInfoConnector outOfAHatInfoConnector;
     private OutOfAHatInfoMapper outOfAHatInfoMapper;
 
     @Autowired
-    public UserRepository (OutOfAHatInfoConnector outOfAHatInfoConnector) {
+    public UserRepository(IOutOfAHatInfoConnector outOfAHatInfoConnector, OutOfAHatInfoMapper outOfAHatInfoMapper) {
         this.outOfAHatInfoConnector = outOfAHatInfoConnector;
-        outOfAHatInfoMapper = new OutOfAHatInfoMapper();
+        this.outOfAHatInfoMapper = outOfAHatInfoMapper;
     }
+
     @Override
     public String createUser(NewUserRequest userRequest) {
         OutOfAHatInfoDbo outOfAHatInfoDbo = outOfAHatInfoMapper.mapFromNewUserRequest(userRequest);

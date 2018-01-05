@@ -8,9 +8,11 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import org.mongodb.morphia.annotations.Embedded;
 
 import java.util.List;
 
+@Embedded
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @AllArgsConstructor

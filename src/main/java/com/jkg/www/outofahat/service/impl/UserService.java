@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserService implements IUserService{
+public class UserService implements IUserService {
     Logger logger = LoggerFactory.getLogger(UserService.class);
 
     private IUserRepository userRepository;
@@ -27,7 +27,7 @@ public class UserService implements IUserService{
             String userId = userRepository.createUser(userRequest);
             return NewUserResponse.success(userId);
         } catch (Exception ex) {
-            ErrorDetails errorDetails = new ErrorDetails(42, "failed to create user: " + ex.getMessage());
+            ErrorDetails errorDetails = new ErrorDetails(SystemEvent.CREATE_USER_FAIL.getId(), SystemEvent.CREATE_USER_FAIL.getDescription() + ex.getMessage());
             logger.error(errorDetails.getErrorMessage(), ex);
             return NewUserResponse.failure(errorDetails);
         }
