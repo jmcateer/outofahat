@@ -10,7 +10,6 @@ public class OutOfAHatInfoMapper {
 
     public OutOfAHatInfoDbo mapFromNewUserRequest(NewUserRequest userRequest) {
         ContactDbo contactDbo = new ContactDbo(
-                userRequest.getFirst() + userRequest.getLast(),
                 userRequest.getFirst(),
                 userRequest.getLast(),
                 userRequest.getEmail(),
