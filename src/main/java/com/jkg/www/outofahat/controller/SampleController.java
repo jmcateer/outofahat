@@ -48,6 +48,6 @@ public class SampleController {
             logger.warn("retrieving test:" + test, ex);
             logger.error("retrieving test:" + test, ex);
         }
-        return responseEntityMapper.mapWithReqeustId(response);
+        return responseEntityMapper.map(response);
     }
 }

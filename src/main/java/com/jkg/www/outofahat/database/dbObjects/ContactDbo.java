@@ -22,8 +22,6 @@ import java.util.List;
 @Setter
 public class ContactDbo {
     @NonNull
-    private String id;
-    @NonNull
     private String first;
     @NonNull
     private String last;

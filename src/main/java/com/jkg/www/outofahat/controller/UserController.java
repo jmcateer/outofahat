@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -33,11 +34,15 @@ public class UserController {
     @RequestMapping(path = "/v1/user/create", produces = "application/json", method = RequestMethod.POST)
     @ApiOperation(value = "create user", nickname = "create user")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Success", response = NewUserResponse.class),
+            @ApiResponse(code = 201, message = "Success", response = NewUserResponse.class),
             @ApiResponse(code = 500, message = "Error", response = NewUserResponse.class)})
     @ResponseBody
     public ResponseEntity<? extends IResponseMessage> createUser(@RequestBody NewUserRequest newUserRequest) {
         NewUserResponse response = userService.createUser(newUserRequest);
-        return responseEntityMapper.mapWithReqeustId(response);
+        HttpHeaders httpHeaders = new HttpHeaders();
+        if(response.isSuccessful()) {
+            httpHeaders.set("id", response.getValue());
+        }
+        return responseEntityMapper.mapWithHeaders(response, HttpStatus.CREATED, httpHeaders);
     }
 }

@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import static org.junit.Assert.assertEquals;
@@ -33,16 +34,14 @@ public class UserControllerTest {
     @Test
     public void test_createUser() {
         NewUserRequest request = new NewUserRequest("userName", "password", "first", "last", "email", "phone");
-        String userId = "user id";
+        String userId = "asdfavweasdf";
         when(userService.createUser(eq(request))).thenReturn(NewUserResponse.success(userId));
 
         ResponseEntity responseEntity = userController.createUser(request);
 
         assertNotNull(responseEntity);
-        NewUserResponse response = (NewUserResponse) responseEntity.getBody();
-        assertNotNull(response);
-        assertTrue(response.isSuccessful());
-        assertEquals(userId, response.getValue());
+        assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
+        assertEquals(userId, responseEntity.getHeaders().get("id").get(0));
     }
 
     @Test
