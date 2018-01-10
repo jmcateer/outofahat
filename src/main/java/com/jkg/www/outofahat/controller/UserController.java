@@ -3,7 +3,6 @@ package com.jkg.www.outofahat.controller;
 import com.jkg.www.outofahat.service.IUserService;
 import com.jkg.www.outofahat.service.valueobject.IResponseMessage;
 import com.jkg.www.outofahat.service.valueobject.NewUserRequest;
-import com.jkg.www.outofahat.service.valueobject.NewUserResponse;
 import com.jkg.www.outofahat.service.valueobject.ServiceResponse;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -36,8 +35,8 @@ public class UserController {
     @RequestMapping(path = "/v1/user/create", produces = "application/json", method = RequestMethod.POST)
     @ApiOperation(value = "create user", nickname = "create user")
     @ApiResponses(value = {
-            @ApiResponse(code = 201, message = "Success", response = NewUserResponse.class),
-            @ApiResponse(code = 500, message = "Error", response = NewUserResponse.class)})
+            @ApiResponse(code = 201, message = "Success", response = ServiceResponse.class),
+            @ApiResponse(code = 500, message = "Error", response = ServiceResponse.class)})
     @ResponseBody
     public ResponseEntity<? extends IResponseMessage> createUser(@RequestBody NewUserRequest newUserRequest) {
         ServiceResponse response = userService.createUser(newUserRequest);

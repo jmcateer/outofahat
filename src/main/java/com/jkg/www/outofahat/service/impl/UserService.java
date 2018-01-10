@@ -14,7 +14,7 @@ import org.springframework.util.Assert;
 
 @Service
 public class UserService implements IUserService {
-    Logger logger = LoggerFactory.getLogger(UserService.class);
+    private Logger logger = LoggerFactory.getLogger(UserService.class);
 
     private IUserRepository userRepository;
 
@@ -39,7 +39,7 @@ public class UserService implements IUserService {
     public ServiceResponse getUserInfo(final String userId) {
         try {
             UserInfo userInfo = userRepository.getUserInfo(userId);
-            Assert.notNull(userId, "failed to retrieve user info: " + userId);
+            Assert.notNull(userInfo, "failed to retrieve user info: " + userId);
             return ServiceResponse.success(userInfo);
         } catch (Exception ex) {
             ErrorDetails errorDetails = new ErrorDetails(SystemEvent.USER_FIND_ERROR.getId(), SystemEvent.USER_FIND_ERROR.getDescription() + ex.getMessage());
