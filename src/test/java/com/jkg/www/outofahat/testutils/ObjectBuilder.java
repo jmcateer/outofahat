@@ -1,6 +1,7 @@
 package com.jkg.www.outofahat.testutils;
 
-import com.jkg.www.outofahat.database.dbObjects.ContactDbo;
+import com.jkg.www.outofahat.database.dbObjects.ContactInfoDbo;
+import com.jkg.www.outofahat.database.dbObjects.FriendDbo;
 import com.jkg.www.outofahat.database.dbObjects.OutOfAHatInfoDbo;
 import com.jkg.www.outofahat.service.valueobject.NewUserRequest;
 import com.jkg.www.outofahat.service.valueobject.user.ContactInfo;
@@ -15,13 +16,17 @@ public class ObjectBuilder {
     }
 
     public static OutOfAHatInfoDbo buildOutOfAHatInfoDbo() {
-        OutOfAHatInfoDbo outOfAHatInfoDbo = new OutOfAHatInfoDbo("userName", "password", buildContactDbo());
+        OutOfAHatInfoDbo outOfAHatInfoDbo = new OutOfAHatInfoDbo("userName", "password", buildContactInfoDbo());
         outOfAHatInfoDbo.setId(new ObjectId(userId));
         return outOfAHatInfoDbo;
     }
 
-    public static ContactDbo buildContactDbo() {
-        return new ContactDbo(316857, "first", "last", "email", "phone", true);
+    public static FriendDbo buildFriendDbo() {
+        return new FriendDbo(316857, buildContactInfoDbo(), true);
+    }
+
+    public static ContactInfoDbo buildContactInfoDbo() {
+        return new ContactInfoDbo("first", "last", "email", "phone");
     }
 
     public static NewUserRequest buildNewUserRequest() {
@@ -33,6 +38,6 @@ public class ObjectBuilder {
     }
 
     public static ContactInfo buildContactInfo() {
-        return new ContactInfo(316857, "first", "last", "email", "phone", true);
+        return new ContactInfo("first", "last", "email", "phone");
     }
 }

@@ -8,7 +8,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 public class OutOfAHatInfoMapperTest {
 
@@ -27,12 +26,11 @@ public class OutOfAHatInfoMapperTest {
 
         assertEquals(userRequest.getUserName(), outOfAHatInfoDbo.getUserName());
         assertEquals(userRequest.getPassword(), outOfAHatInfoDbo.getPassword());
-        assertTrue(outOfAHatInfoDbo.getContact().getContactId() > 0);
-        assertTrue(outOfAHatInfoDbo.getContact().getActive());
-        assertEquals(userRequest.getFirst(), outOfAHatInfoDbo.getContact().getFirst());
-        assertEquals(userRequest.getLast(), outOfAHatInfoDbo.getContact().getLast());
-        assertEquals(userRequest.getEmail(), outOfAHatInfoDbo.getContact().getEmail());
-        assertEquals(userRequest.getPhone(), outOfAHatInfoDbo.getContact().getPhone());
+
+        assertEquals(userRequest.getFirst(), outOfAHatInfoDbo.getContactInfoDbo().getFirst());
+        assertEquals(userRequest.getLast(), outOfAHatInfoDbo.getContactInfoDbo().getLast());
+        assertEquals(userRequest.getEmail(), outOfAHatInfoDbo.getContactInfoDbo().getEmail());
+        assertEquals(userRequest.getPhone(), outOfAHatInfoDbo.getContactInfoDbo().getPhone());
     }
 
     @Test
@@ -43,11 +41,9 @@ public class OutOfAHatInfoMapperTest {
 
         assertEquals(outOfAHatInfoDbo.getId().toString(), userInfo.getUserId());
         assertEquals(outOfAHatInfoDbo.getUserName(), userInfo.getUserName());
-        assertEquals(outOfAHatInfoDbo.getContact().getContactId(), userInfo.getContactInfo().getContactId());
-        assertEquals(outOfAHatInfoDbo.getContact().getFirst(), userInfo.getContactInfo().getFirst());
-        assertEquals(outOfAHatInfoDbo.getContact().getLast(), userInfo.getContactInfo().getLast());
-        assertEquals(outOfAHatInfoDbo.getContact().getEmail(), userInfo.getContactInfo().getEmail());
-        assertEquals(outOfAHatInfoDbo.getContact().getPhone(), userInfo.getContactInfo().getPhone());
-        assertEquals(outOfAHatInfoDbo.getContact().getActive(), userInfo.getContactInfo().getActive());
+        assertEquals(outOfAHatInfoDbo.getContactInfoDbo().getFirst(), userInfo.getContactInfo().getFirst());
+        assertEquals(outOfAHatInfoDbo.getContactInfoDbo().getLast(), userInfo.getContactInfo().getLast());
+        assertEquals(outOfAHatInfoDbo.getContactInfoDbo().getEmail(), userInfo.getContactInfo().getEmail());
+        assertEquals(outOfAHatInfoDbo.getContactInfoDbo().getPhone(), userInfo.getContactInfo().getPhone());
     }
 }

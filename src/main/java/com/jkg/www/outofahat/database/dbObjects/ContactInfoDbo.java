@@ -1,18 +1,22 @@
-package com.jkg.www.outofahat.service.valueobject.user;
+package com.jkg.www.outofahat.database.dbObjects;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import org.mongodb.morphia.annotations.Embedded;
 
+@Embedded
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@AllArgsConstructor
 @NoArgsConstructor
+@RequiredArgsConstructor
 @Getter
-public class ContactInfo {
+@Setter
+public class ContactInfoDbo {
     @NonNull
     private String first;
     @NonNull

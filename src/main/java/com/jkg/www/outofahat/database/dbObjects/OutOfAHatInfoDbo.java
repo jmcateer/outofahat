@@ -30,7 +30,7 @@ public class OutOfAHatInfoDbo {
     @NonNull
     private String password;
     @NonNull
-    private ContactDbo contact;
-    private List<ContactDbo> contactList;
+    private ContactInfoDbo contactInfoDbo;
+    private List<FriendDbo> contactList;
     private List<EventInfoDbo> eventInfoList;
 }
