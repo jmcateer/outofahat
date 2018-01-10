@@ -4,7 +4,6 @@ import com.jkg.www.outofahat.service.IUserService;
 import com.jkg.www.outofahat.service.valueobject.ErrorDetails;
 import com.jkg.www.outofahat.service.valueobject.NewUserRequest;
 import com.jkg.www.outofahat.service.valueobject.ServiceResponse;
-import com.jkg.www.outofahat.service.valueobject.user.ContactInfo;
 import com.jkg.www.outofahat.service.valueobject.user.UserInfo;
 import com.jkg.www.outofahat.testutils.ObjectBuilder;
 import org.junit.Before;
@@ -64,7 +63,7 @@ public class UserControllerTest {
 
     @Test
     public void test_getUserInfo() {
-        UserInfo userInfo = new UserInfo(userId, "userName", new ContactInfo(316857, "first", "last", "email", "phone",true));
+        UserInfo userInfo = ObjectBuilder.buildUserInfo();
         when(userService.getUserInfo(userId)).thenReturn(ServiceResponse.success(userInfo));
 
         ResponseEntity responseEntity = userController.getUserInfo(userId);
