@@ -1,8 +1,9 @@
 package com.jkg.www.outofahat.service;
 
 import com.jkg.www.outofahat.service.valueobject.NewUserRequest;
-import com.jkg.www.outofahat.service.valueobject.NewUserResponse;
+import com.jkg.www.outofahat.service.valueobject.ServiceResponse;
 
 public interface IUserService {
-    NewUserResponse createUser(NewUserRequest newUserRequest);
+    ServiceResponse createUser(NewUserRequest newUserRequest);
+    ServiceResponse getUserInfo(final String userId);
 }

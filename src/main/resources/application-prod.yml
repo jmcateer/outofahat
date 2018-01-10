@@ -1,1 +1,5 @@
 test: "applcation-prod"
+
+mongo:
+  uri: "mongodb://outofahat:OvFXee5gInT0KnB3JymVLUnyXEnCX65Z96ak3A97RkVBVDfKMOhtG889ykNmJoCQiSoCdLZoVURrXPX9Nk8vVw==@outofahat.documents.azure.com:10255/?ssl=true&replicaSet=globaldb"
+  dbName: "outofahat"

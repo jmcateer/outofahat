@@ -3,6 +3,7 @@ package com.jkg.www.outofahat.service.impl;
 import com.jkg.www.outofahat.repository.IUserRepository;
 import com.jkg.www.outofahat.service.valueobject.NewUserRequest;
 import com.jkg.www.outofahat.service.valueobject.NewUserResponse;
+import com.jkg.www.outofahat.service.valueobject.ServiceResponse;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -41,7 +42,7 @@ public class UserServiceTest {
         String id = "laksjdflaj";
         when(userRepository.createUser(eq(userRequest))).thenReturn(id);
 
-        NewUserResponse userResponse = service.createUser(userRequest);
+        ServiceResponse userResponse = service.createUser(userRequest);
 
         assertEquals(id, userResponse.getValue());
         verify(userRepository, times(1)).createUser(eq(userRequest));
@@ -52,7 +53,7 @@ public class UserServiceTest {
         NewUserRequest userRequest = new NewUserRequest("userName", "password", "first", "last", "e@mail.com", "4255556666");
         when(userRepository.createUser(eq(userRequest))).thenThrow(new RuntimeException("doh"));
 
-        NewUserResponse userResponse = service.createUser(userRequest);
+        ServiceResponse userResponse = service.createUser(userRequest);
 
         assertFalse(userResponse.isSuccessful());
         assertNotNull(userResponse.getErrorDetails());

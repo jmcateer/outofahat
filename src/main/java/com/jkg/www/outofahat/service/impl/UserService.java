@@ -4,11 +4,13 @@ import com.jkg.www.outofahat.repository.IUserRepository;
 import com.jkg.www.outofahat.service.IUserService;
 import com.jkg.www.outofahat.service.valueobject.ErrorDetails;
 import com.jkg.www.outofahat.service.valueobject.NewUserRequest;
-import com.jkg.www.outofahat.service.valueobject.NewUserResponse;
+import com.jkg.www.outofahat.service.valueobject.ServiceResponse;
+import com.jkg.www.outofahat.service.valueobject.user.UserInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 
 @Service
 public class UserService implements IUserService {
@@ -22,14 +24,27 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public NewUserResponse createUser(NewUserRequest userRequest) {
+    public ServiceResponse createUser(NewUserRequest userRequest) {
         try {
             String userId = userRepository.createUser(userRequest);
-            return NewUserResponse.success(userId);
+            return ServiceResponse.success(userId);
         } catch (Exception ex) {
-            ErrorDetails errorDetails = new ErrorDetails(SystemEvent.CREATE_USER_FAIL.getId(), SystemEvent.CREATE_USER_FAIL.getDescription() + ex.getMessage());
+            ErrorDetails errorDetails = new ErrorDetails(SystemEvent.USER_CREATE_FAIL.getId(), SystemEvent.USER_CREATE_FAIL.getDescription() + ex.getMessage());
             logger.error(errorDetails.getErrorMessage(), ex);
-            return NewUserResponse.failure(errorDetails);
+            return ServiceResponse.failure(errorDetails);
+        }
+    }
+
+    @Override
+    public ServiceResponse getUserInfo(final String userId) {
+        try {
+            UserInfo userInfo = userRepository.getUserInfo(userId);
+            Assert.notNull(userId, "failed to retrieve user info: " + userId);
+            return ServiceResponse.success(userInfo);
+        } catch (Exception ex) {
+            ErrorDetails errorDetails = new ErrorDetails(SystemEvent.USER_FIND_ERROR.getId(), SystemEvent.USER_FIND_ERROR.getDescription() + ex.getMessage());
+            logger.error(errorDetails.getErrorMessage(), ex);
+            return ServiceResponse.failure(errorDetails);
         }
     }
 }
