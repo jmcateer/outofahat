@@ -2,7 +2,8 @@ package com.jkg.www.outofahat.service.impl;
 
 public enum SystemEvent {
 
-    CREATE_USER_FAIL(1000, "Failed to create user");
+    USER_CREATE_FAIL(1000, "Failed to create user"),
+    USER_FIND_ERROR(1001, "Failed to find user info.");
 
     private int id;
     private String description;

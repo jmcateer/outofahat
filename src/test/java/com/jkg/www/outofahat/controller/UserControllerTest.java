@@ -4,6 +4,7 @@ import com.jkg.www.outofahat.service.IUserService;
 import com.jkg.www.outofahat.service.valueobject.ErrorDetails;
 import com.jkg.www.outofahat.service.valueobject.NewUserRequest;
 import com.jkg.www.outofahat.service.valueobject.NewUserResponse;
+import com.jkg.www.outofahat.service.valueobject.ServiceResponse;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -35,7 +36,7 @@ public class UserControllerTest {
     public void test_createUser() {
         NewUserRequest request = new NewUserRequest("userName", "password", "first", "last", "email", "phone");
         String userId = "asdfavweasdf";
-        when(userService.createUser(eq(request))).thenReturn(NewUserResponse.success(userId));
+        when(userService.createUser(eq(request))).thenReturn(ServiceResponse.success(userId));
 
         ResponseEntity responseEntity = userController.createUser(request);
 
@@ -47,12 +48,12 @@ public class UserControllerTest {
     @Test
     public void test_createUser_fail() {
         NewUserRequest request = new NewUserRequest("userName", "password", "first", "last", "email", "phone");
-        when(userService.createUser(eq(request))).thenReturn(NewUserResponse.failure(new ErrorDetails(42, "doh")));
+        when(userService.createUser(eq(request))).thenReturn(ServiceResponse.failure(new ErrorDetails(42, "doh")));
 
         ResponseEntity responseEntity = userController.createUser(request);
 
         assertNotNull(responseEntity);
-        NewUserResponse response = (NewUserResponse) responseEntity.getBody();
+        ServiceResponse response = (ServiceResponse) responseEntity.getBody();
         assertNotNull(response);
         assertFalse(response.isSuccessful());
         assertNotNull(response.getErrorDetails());

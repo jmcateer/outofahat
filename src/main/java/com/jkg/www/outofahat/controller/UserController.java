@@ -4,6 +4,7 @@ import com.jkg.www.outofahat.service.IUserService;
 import com.jkg.www.outofahat.service.valueobject.IResponseMessage;
 import com.jkg.www.outofahat.service.valueobject.NewUserRequest;
 import com.jkg.www.outofahat.service.valueobject.NewUserResponse;
+import com.jkg.www.outofahat.service.valueobject.ServiceResponse;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -15,6 +16,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -38,11 +40,22 @@ public class UserController {
             @ApiResponse(code = 500, message = "Error", response = NewUserResponse.class)})
     @ResponseBody
     public ResponseEntity<? extends IResponseMessage> createUser(@RequestBody NewUserRequest newUserRequest) {
-        NewUserResponse response = userService.createUser(newUserRequest);
+        ServiceResponse response = userService.createUser(newUserRequest);
         HttpHeaders httpHeaders = new HttpHeaders();
         if(response.isSuccessful()) {
-            httpHeaders.set("id", response.getValue());
+            httpHeaders.set("id", (String) response.getValue());
         }
         return responseEntityMapper.mapWithHeaders(response, HttpStatus.CREATED, httpHeaders);
+    }
+
+    @RequestMapping(path = "/v1/user/{userId}", produces = "application/json", method = RequestMethod.GET)
+    @ApiOperation(value = "get user", nickname = "get user")
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Success", response = ServiceResponse.class),
+            @ApiResponse(code = 500, message = "Error", response = ServiceResponse.class)})
+    @ResponseBody
+    public ResponseEntity<? extends IResponseMessage> getUserInfo(@RequestParam String userId) {
+        ServiceResponse response = userService.getUserInfo(userId);
+        return responseEntityMapper.map(response);
     }
 }
