@@ -22,6 +22,8 @@ import java.util.List;
 @Setter
 public class ContactDbo {
     @NonNull
+    private Integer contactId;
+    @NonNull
     private String first;
     @NonNull
     private String last;
@@ -29,6 +31,8 @@ public class ContactDbo {
     private String email;
     @NonNull
     private String phone;
+    @NonNull
+    private Boolean active;
     private List<String> ineligibles;
     private List<String> previous;
 }

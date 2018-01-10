@@ -12,10 +12,12 @@ public class OutOfAHatInfoMapper {
 
     public OutOfAHatInfoDbo mapFromNewUserRequest(NewUserRequest userRequest) {
         ContactDbo contactDbo = new ContactDbo(
+                ceateHash(userRequest.getFirst(), userRequest.getLast(), userRequest.getEmail(), userRequest.getPhone()),
                 userRequest.getFirst(),
                 userRequest.getLast(),
                 userRequest.getEmail(),
-                userRequest.getPhone()
+                userRequest.getPhone(),
+                true
         );
         OutOfAHatInfoDbo outOfAHatInfoDbo = new OutOfAHatInfoDbo(
                 userRequest.getUserName(),
@@ -27,9 +29,11 @@ public class OutOfAHatInfoMapper {
 
     public UserInfo mapToUserInfo(final OutOfAHatInfoDbo outOfAHatInfoDbo) {
         ContactInfo contactInfo = new ContactInfo(
+                outOfAHatInfoDbo.getContact().getContactId(),
                 outOfAHatInfoDbo.getContact().getFirst(),
                 outOfAHatInfoDbo.getContact().getLast(),
-                outOfAHatInfoDbo.getContact().getEmail());
+                outOfAHatInfoDbo.getContact().getEmail(),
+                outOfAHatInfoDbo.getContact().getActive());
 
         UserInfo userInfo = new UserInfo(
                 outOfAHatInfoDbo.getId().toString(),
@@ -37,5 +41,9 @@ public class OutOfAHatInfoMapper {
                 contactInfo);
 
         return userInfo;
+    }
+
+    private int ceateHash(String first, String last, String email, String phone) {
+        return first.concat(last).concat(email).concat(phone).hashCode();
     }
 }

@@ -11,15 +11,29 @@ import org.mongodb.morphia.Morphia;
 import org.mongodb.morphia.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Repository;
 
+import javax.annotation.PostConstruct;
+
 @Repository
+@ConfigurationProperties("mongo")
 public class OutOfAHatInfoConnector implements IOutOfAHatInfoConnector {
     private Datastore datastore;
+    private String uri;
+    private String dbName;
 
-    @Autowired
-    public OutOfAHatInfoConnector(@Value("${mongo.uri}") final String mongoUri, @Value("${mongo.dbName}") final String dbName) {
-        final MongoClientURI mongoClientURI = new MongoClientURI(mongoUri);
+    public void setUri(String uri) {
+        this.uri = uri;
+    }
+
+    public void setDbName(String dbName) {
+        this.dbName = dbName;
+    }
+
+    @PostConstruct
+    public void setup(){
+        final MongoClientURI mongoClientURI = new MongoClientURI(uri);
         final MongoClient mongoClient = new MongoClient(mongoClientURI);
         final Morphia morphia = new Morphia();
         datastore = morphia.mapPackageFromClass(OutOfAHatInfoDbo.class)
