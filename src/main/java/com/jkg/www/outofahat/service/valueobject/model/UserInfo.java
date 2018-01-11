@@ -1,4 +1,4 @@
-package com.jkg.www.outofahat.service.valueobject.user;
+package com.jkg.www.outofahat.service.valueobject.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -12,13 +12,11 @@ import lombok.NonNull;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class ContactInfo {
+public class UserInfo {
     @NonNull
-    private String first;
+    private String userId;
     @NonNull
-    private String last;
+    private String userName;
     @NonNull
-    private String email;
-    @NonNull
-    private String phone;
+    private ContactInfo contactInfo;
 }

@@ -2,6 +2,7 @@ package com.jkg.www.outofahat.database.impl;
 
 import com.jkg.www.outofahat.database.IOutOfAHatInfoConnector;
 import com.jkg.www.outofahat.database.dbObjects.OutOfAHatInfoDbo;
+import com.jkg.www.outofahat.database.dbObjects.ParticipantDbo;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import org.bson.types.ObjectId;
@@ -9,41 +10,45 @@ import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Key;
 import org.mongodb.morphia.Morphia;
 import org.mongodb.morphia.query.Query;
+import org.mongodb.morphia.query.UpdateOperations;
+import org.mongodb.morphia.query.UpdateResults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.Assert;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 
 @Repository
 @ConfigurationProperties("mongo")
-public class OutOfAHatInfoConnector implements IOutOfAHatInfoConnector {
-    private Datastore datastore;
+public class OutOfAHatInfoConnector extends MongoConnector<OutOfAHatInfoDbo> implements IOutOfAHatInfoConnector {
     private String uri;
     private String dbName;
 
+    @Override
+    protected String getDbName() {
+        return dbName;
+    }
+    @Override
+    protected String getUri() {
+        return uri;
+    }
+    @Override
+    protected Class<OutOfAHatInfoDbo> getDboClass() {
+        return OutOfAHatInfoDbo.class;
+    }
     public void setUri(String uri) {
         this.uri = uri;
     }
-
     public void setDbName(String dbName) {
         this.dbName = dbName;
     }
 
-    @PostConstruct
-    public void setup(){
-        final MongoClientURI mongoClientURI = new MongoClientURI(uri);
-        final MongoClient mongoClient = new MongoClient(mongoClientURI);
-        final Morphia morphia = new Morphia();
-        datastore = morphia.mapPackageFromClass(OutOfAHatInfoDbo.class)
-                .createDatastore(mongoClient, dbName);
-        datastore.ensureIndexes();
-    }
-
     @Override
     public String createUser(final OutOfAHatInfoDbo outOfAHatInfoDbo) {
-        Key<OutOfAHatInfoDbo> key = datastore.save(outOfAHatInfoDbo);
+        Key<OutOfAHatInfoDbo> key = getDatastore().save(outOfAHatInfoDbo);
         String result = null;
         if (key != null) {
             result = key.getId().toString();
@@ -53,9 +58,37 @@ public class OutOfAHatInfoConnector implements IOutOfAHatInfoConnector {
 
     @Override
     public OutOfAHatInfoDbo findByUserId(final String userId) {
-        Query<OutOfAHatInfoDbo> query = datastore.createQuery(OutOfAHatInfoDbo.class);
-        query.field("id").equal(new ObjectId(userId));
+        Query<OutOfAHatInfoDbo> query = getUserIdQuery(userId);
         return query.get();
     }
 
+    @Override
+    public boolean addParticipant(String userId, ParticipantDbo participantDbo) {
+        UpdateOperations<OutOfAHatInfoDbo> updateOperations = getDatastore().createUpdateOperations(OutOfAHatInfoDbo.class);
+        updateOperations.addToSet("participants", participantDbo);
+
+        return updateByUserId(userId, updateOperations);
+    }
+
+    @Override
+    public List<ParticipantDbo> getParticipants(final String userId) {
+        Query<OutOfAHatInfoDbo> query = getUserIdQuery(userId);
+        query.project("participants", true);
+        OutOfAHatInfoDbo outOfAHatInfoDbo = query.get();
+        Assert.notNull(outOfAHatInfoDbo, "unable to retrieve participants list for " + userId);
+        return outOfAHatInfoDbo.getParticipants();
+    }
+
+    private boolean updateByUserId(final String userId, UpdateOperations<OutOfAHatInfoDbo> updateOperations) {
+        final Query<OutOfAHatInfoDbo> query = getUserIdQuery(userId);
+        UpdateResults updateResults = getDatastore().update(query, updateOperations);
+        return updateResults.getUpdatedCount() > 0;
+    }
+
+    private Query<OutOfAHatInfoDbo> getUserIdQuery(final String userId) {
+        Assert.isTrue(ObjectId.isValid(userId), "userId is not valid.");
+        Query<OutOfAHatInfoDbo> query = getDatastore().createQuery(OutOfAHatInfoDbo.class);
+        query.field("_id").equal(new ObjectId(userId));
+        return query;
+    }
 }

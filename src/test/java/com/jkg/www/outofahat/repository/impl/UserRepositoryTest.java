@@ -3,7 +3,7 @@ package com.jkg.www.outofahat.repository.impl;
 import com.jkg.www.outofahat.database.IOutOfAHatInfoConnector;
 import com.jkg.www.outofahat.database.dbObjects.OutOfAHatInfoDbo;
 import com.jkg.www.outofahat.service.valueobject.NewUserRequest;
-import com.jkg.www.outofahat.service.valueobject.user.UserInfo;
+import com.jkg.www.outofahat.service.valueobject.model.UserInfo;
 import com.jkg.www.outofahat.testutils.ObjectBuilder;
 import org.junit.Before;
 import org.junit.Test;
