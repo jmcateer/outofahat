@@ -4,7 +4,7 @@ import com.jkg.www.outofahat.service.IUserService;
 import com.jkg.www.outofahat.service.valueobject.ErrorDetails;
 import com.jkg.www.outofahat.service.valueobject.NewUserRequest;
 import com.jkg.www.outofahat.service.valueobject.ServiceResponse;
-import com.jkg.www.outofahat.service.valueobject.user.UserInfo;
+import com.jkg.www.outofahat.service.valueobject.model.UserInfo;
 import com.jkg.www.outofahat.testutils.ObjectBuilder;
 import org.junit.Before;
 import org.junit.Test;

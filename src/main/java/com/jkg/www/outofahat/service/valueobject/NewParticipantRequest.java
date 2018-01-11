@@ -4,14 +4,16 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class NewUserRequest {
-    private String userName;
-    private String password;
+public class NewParticipantRequest {
     private String first;
     private String last;
     private String email;
     private String phone;
+    private List<Integer> ineligibles;
+    private List<Integer> previous;
 }

@@ -20,13 +20,13 @@ import java.util.List;
 @RequiredArgsConstructor
 @Getter
 @Setter
-public class FriendDbo {
+public class ParticipantDbo {
     @NonNull
-    private Integer friendId;
+    private String Id;
     @NonNull
-    private ContactInfoDbo contactInfoDbo;
+    private ContactInfoDbo contactInfo;
     @NonNull
     private Boolean active;
-    private List<Integer> ineligibles;
-    private List<Integer> previous;
+    private List<String> ineligibles;
+    private List<String> previous;
 }

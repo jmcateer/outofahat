@@ -1,8 +1,8 @@
 package com.jkg.www.outofahat.controller;
 
-import com.jkg.www.outofahat.service.IUserService;
+import com.jkg.www.outofahat.service.IParticipantService;
 import com.jkg.www.outofahat.service.valueobject.IResponseMessage;
-import com.jkg.www.outofahat.service.valueobject.NewUserRequest;
+import com.jkg.www.outofahat.service.valueobject.NewParticipantRequest;
 import com.jkg.www.outofahat.service.valueobject.ServiceResponse;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -16,46 +16,46 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @Validated
 @RestController
 @RequestMapping("api")
-public class UserController {
-    private IUserService userService;
+public class ParticipantController {
     private ResponseEntityMapper responseEntityMapper;
+    private IParticipantService participantService;
 
     @Autowired
-    public UserController(IUserService userService, ResponseEntityMapper responseEntityMapper) {
-        this.userService = userService;
+    public ParticipantController(IParticipantService participantService, ResponseEntityMapper responseEntityMapper) {
+        this.participantService = participantService;
         this.responseEntityMapper = responseEntityMapper;
     }
 
-    @RequestMapping(path = "/v1/user/create", produces = "application/json", method = RequestMethod.POST)
-    @ApiOperation(value = "create user", nickname = "create user")
+    @RequestMapping(path = "/v1/participant/{userId}/add", produces = "application/json", method = RequestMethod.POST)
+    @ApiOperation(value = "add participant to user", nickname = "add participant to user")
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Success", response = ServiceResponse.class),
             @ApiResponse(code = 500, message = "Error", response = ServiceResponse.class)})
     @ResponseBody
-    public ResponseEntity<? extends IResponseMessage> createUser(@RequestBody NewUserRequest newUserRequest) {
-        ServiceResponse response = userService.createUser(newUserRequest);
+    public ResponseEntity<? extends IResponseMessage> createParticipant(@PathVariable String userId, @RequestBody NewParticipantRequest newParticipantRequest) {
+        ServiceResponse response = participantService.createParticipant(userId, newParticipantRequest);
         HttpHeaders httpHeaders = new HttpHeaders();
         if(response.isSuccessful()) {
-            httpHeaders.set("id", (String) response.getValue());
+            httpHeaders.set("participantId", (String) response.getValue());
         }
         return responseEntityMapper.mapWithHeaders(response, HttpStatus.CREATED, httpHeaders);
     }
 
-    @RequestMapping(path = "/v1/user/{userId}/info", produces = "application/json", method = RequestMethod.GET)
-    @ApiOperation(value = "get user", nickname = "get user")
+    @RequestMapping(path = "/v1/participant/{userId}/list", produces = "application/json", method = RequestMethod.GET)
+    @ApiOperation(value = "get participants for user", nickname = "get participants for user")
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Success", response = ServiceResponse.class),
             @ApiResponse(code = 500, message = "Error", response = ServiceResponse.class)})
     @ResponseBody
     public ResponseEntity<? extends IResponseMessage> getUserInfo(@PathVariable("userId") String userId) {
-        ServiceResponse response = userService.getUserInfo(userId);
+        ServiceResponse response = participantService.getParticipants(userId);
         return responseEntityMapper.map(response);
     }
+
 }

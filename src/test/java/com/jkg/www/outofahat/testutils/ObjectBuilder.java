@@ -1,12 +1,15 @@
 package com.jkg.www.outofahat.testutils;
 
 import com.jkg.www.outofahat.database.dbObjects.ContactInfoDbo;
-import com.jkg.www.outofahat.database.dbObjects.FriendDbo;
+import com.jkg.www.outofahat.database.dbObjects.ParticipantDbo;
 import com.jkg.www.outofahat.database.dbObjects.OutOfAHatInfoDbo;
 import com.jkg.www.outofahat.service.valueobject.NewUserRequest;
-import com.jkg.www.outofahat.service.valueobject.user.ContactInfo;
-import com.jkg.www.outofahat.service.valueobject.user.UserInfo;
+import com.jkg.www.outofahat.service.valueobject.model.ContactInfo;
+import com.jkg.www.outofahat.service.valueobject.model.UserInfo;
 import org.bson.types.ObjectId;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ObjectBuilder {
     private static final String userId = "5a55a7a7bf24bb3794378b80";
@@ -16,13 +19,21 @@ public class ObjectBuilder {
     }
 
     public static OutOfAHatInfoDbo buildOutOfAHatInfoDbo() {
-        OutOfAHatInfoDbo outOfAHatInfoDbo = new OutOfAHatInfoDbo("userName", "password", buildContactInfoDbo());
+        OutOfAHatInfoDbo outOfAHatInfoDbo = new OutOfAHatInfoDbo(
+                "userName",
+                "password",
+                buildContactInfoDbo(),
+                Arrays.asList(buildParticipantDbo()),
+                new ArrayList<>()
+        );
         outOfAHatInfoDbo.setId(new ObjectId(userId));
         return outOfAHatInfoDbo;
     }
 
-    public static FriendDbo buildFriendDbo() {
-        return new FriendDbo(316857, buildContactInfoDbo(), true);
+    public static ParticipantDbo buildParticipantDbo() {
+        ContactInfoDbo contactInfoDbo = buildContactInfoDbo();
+        String participantId = contactInfoDbo.getFirst() + "_" + contactInfoDbo.getLast();
+        return new ParticipantDbo(participantId, contactInfoDbo, true);
     }
 
     public static ContactInfoDbo buildContactInfoDbo() {

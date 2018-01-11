@@ -2,10 +2,9 @@ package com.jkg.www.outofahat.service.impl;
 
 import com.jkg.www.outofahat.repository.IUserRepository;
 import com.jkg.www.outofahat.service.IUserService;
-import com.jkg.www.outofahat.service.valueobject.ErrorDetails;
 import com.jkg.www.outofahat.service.valueobject.NewUserRequest;
 import com.jkg.www.outofahat.service.valueobject.ServiceResponse;
-import com.jkg.www.outofahat.service.valueobject.user.UserInfo;
+import com.jkg.www.outofahat.service.valueobject.model.UserInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,9 +28,7 @@ public class UserService implements IUserService {
             String userId = userRepository.createUser(userRequest);
             return ServiceResponse.success(userId);
         } catch (Exception ex) {
-            ErrorDetails errorDetails = new ErrorDetails(SystemEvent.USER_CREATE_FAIL.getId(), SystemEvent.USER_CREATE_FAIL.getDescription() + ex.getMessage());
-            logger.error(errorDetails.getErrorMessage(), ex);
-            return ServiceResponse.failure(errorDetails);
+            return ServiceResponseMapper.failure(logger, SystemEvent.USER_CREATE_FAIL, ex);
         }
     }
 
@@ -42,9 +39,7 @@ public class UserService implements IUserService {
             Assert.notNull(userInfo, "failed to retrieve user info: " + userId);
             return ServiceResponse.success(userInfo);
         } catch (Exception ex) {
-            ErrorDetails errorDetails = new ErrorDetails(SystemEvent.USER_FIND_ERROR.getId(), SystemEvent.USER_FIND_ERROR.getDescription() + ex.getMessage());
-            logger.error(errorDetails.getErrorMessage(), ex);
-            return ServiceResponse.failure(errorDetails);
+            return ServiceResponseMapper.failure(logger, SystemEvent.USER_FIND_ERROR, ex);
         }
     }
 }
