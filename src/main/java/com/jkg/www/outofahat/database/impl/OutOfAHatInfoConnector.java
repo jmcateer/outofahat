@@ -1,8 +1,8 @@
 package com.jkg.www.outofahat.database.impl;
 
 import com.jkg.www.outofahat.database.IOutOfAHatInfoConnector;
-import com.jkg.www.outofahat.database.dbObjects.OutOfAHatInfoDbo;
-import com.jkg.www.outofahat.database.dbObjects.ParticipantDbo;
+import com.jkg.www.outofahat.database.objects.OutOfAHatInfoDbo;
+import com.jkg.www.outofahat.database.objects.ParticipantDbo;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.Key;
 import org.mongodb.morphia.query.Query;
@@ -61,7 +61,8 @@ public class OutOfAHatInfoConnector extends MongoConnector<OutOfAHatInfoDbo> imp
 
     @Override
     public boolean addParticipant(String userId, ParticipantDbo participantDbo) {
-        UpdateOperations<OutOfAHatInfoDbo> updateOperations = getDatastore().createUpdateOperations(OutOfAHatInfoDbo.class);
+        UpdateOperations<OutOfAHatInfoDbo> updateOperations = getDatastore()
+            .createUpdateOperations(OutOfAHatInfoDbo.class);
         updateOperations.addToSet("participants", participantDbo);
 
         return updateByUserId(userId, updateOperations);

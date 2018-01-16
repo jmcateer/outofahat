@@ -1,7 +1,7 @@
 package com.jkg.www.outofahat.repository.impl;
 
-import com.jkg.www.outofahat.database.dbObjects.OutOfAHatInfoDbo;
-import com.jkg.www.outofahat.database.dbObjects.ParticipantDbo;
+import com.jkg.www.outofahat.database.objects.OutOfAHatInfoDbo;
+import com.jkg.www.outofahat.database.objects.ParticipantDbo;
 import com.jkg.www.outofahat.service.valueobject.NewParticipantRequest;
 import com.jkg.www.outofahat.service.valueobject.NewUserRequest;
 import com.jkg.www.outofahat.service.valueobject.model.Participant;

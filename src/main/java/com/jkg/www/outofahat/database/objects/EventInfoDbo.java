@@ -1,4 +1,4 @@
-package com.jkg.www.outofahat.database.dbObjects;
+package com.jkg.www.outofahat.database.objects;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;

@@ -15,6 +15,7 @@ apply plugin: 'groovy'
 
 apply from: 'gradle/jacoco.gradle'
 apply from: 'gradle/findbugs.gradle'
+apply from: 'gradle/checkstyle.gradle'
 
 
 sourceCompatibility = 1.8

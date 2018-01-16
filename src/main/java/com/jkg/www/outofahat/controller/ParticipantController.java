@@ -35,11 +35,12 @@ public class ParticipantController {
     @RequestMapping(path = "/v1/participant/{userId}/add", produces = "application/json", method = RequestMethod.POST)
     @ApiOperation(value = "add participant to user", nickname = "add participant to user")
     @ApiResponses(value = {
-            @ApiResponse(code = 201, message = "Success", response = ServiceResponse.class),
-            @ApiResponse(code = 500, message = "Error", response = ServiceResponse.class)})
+        @ApiResponse(code = 201, message = "Success", response = ServiceResponse.class),
+        @ApiResponse(code = 500, message = "Error", response = ServiceResponse.class)})
     @ResponseBody
-    public ResponseEntity<? extends IResponseMessage> createParticipant(@PathVariable String userId, @RequestBody NewParticipantRequest newParticipantRequest) {
-        ServiceResponse response = participantService.createParticipant(userId, newParticipantRequest);
+    public ResponseEntity<? extends IResponseMessage> createParticipant(@PathVariable String userId,
+                                                                        @RequestBody NewParticipantRequest newRequest) {
+        ServiceResponse response = participantService.createParticipant(userId, newRequest);
         HttpHeaders httpHeaders = new HttpHeaders();
         if (response.isSuccessful()) {
             httpHeaders.set("participantId", (String) response.getValue());
@@ -50,8 +51,8 @@ public class ParticipantController {
     @RequestMapping(path = "/v1/participant/{userId}/list", produces = "application/json", method = RequestMethod.GET)
     @ApiOperation(value = "get participants for user", nickname = "get participants for user")
     @ApiResponses(value = {
-            @ApiResponse(code = 201, message = "Success", response = ServiceResponse.class),
-            @ApiResponse(code = 500, message = "Error", response = ServiceResponse.class)})
+        @ApiResponse(code = 201, message = "Success", response = ServiceResponse.class),
+        @ApiResponse(code = 500, message = "Error", response = ServiceResponse.class)})
     @ResponseBody
     public ResponseEntity<? extends IResponseMessage> getParticipants(@PathVariable("userId") String userId) {
         ServiceResponse response = participantService.getParticipants(userId);

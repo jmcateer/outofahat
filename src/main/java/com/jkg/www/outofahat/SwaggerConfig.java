@@ -40,36 +40,36 @@ public class SwaggerConfig {
     public Docket api() {
         final TypeResolver typeResolver = new TypeResolver();
         final AlternateTypeRule alternateTypeRule = new AlternateTypeRule(
-                typeResolver.resolve(ResponseEntity.class), typeResolver.resolve(Void.class));
+            typeResolver.resolve(ResponseEntity.class), typeResolver.resolve(Void.class));
         return new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(apiInfo())
-                .alternateTypeRules(alternateTypeRule)
-                .useDefaultResponseMessages(false)
-                .select()
-                .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
-                .build()
-                .globalOperationParameters(globalOperationParameters());
+            .apiInfo(apiInfo())
+            .alternateTypeRules(alternateTypeRule)
+            .useDefaultResponseMessages(false)
+            .select()
+            .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
+            .build()
+            .globalOperationParameters(globalOperationParameters());
     }
 
     private ApiInfo apiInfo() {
         final Contact contact = new Contact(null, null, email);
         return new ApiInfoBuilder()
-                .title(title)
-                .description(description)
-                .version(version)
-                .contact(contact)
-                .build();
+            .title(title)
+            .description(description)
+            .version(version)
+            .contact(contact)
+            .build();
     }
 
     List<Parameter> globalOperationParameters() {
         final List<Parameter> parameters = new ArrayList<>();
         final Parameter authorization = new ParameterBuilder()
-                .name("Authorization")
-                .description("Authorization")
-                .modelRef(new ModelRef("string"))
-                .parameterType("header")
-                .required(true)
-                .build();
+            .name("Authorization")
+            .description("Authorization")
+            .modelRef(new ModelRef("string"))
+            .parameterType("header")
+            .required(true)
+            .build();
         parameters.add(authorization);
         return parameters;
     }

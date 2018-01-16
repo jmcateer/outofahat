@@ -76,7 +76,8 @@ public class UserControllerTest {
 
     @Test
     public void test_getUserInfo_fail() {
-        when(userService.getUserInfo(ObjectBuilder.getUserId())).thenReturn(ServiceResponse.failure(new ErrorDetails(42, "doh")));
+        when(userService.getUserInfo(ObjectBuilder.getUserId()))
+            .thenReturn(ServiceResponse.failure(new ErrorDetails(42, "doh")));
 
         ResponseEntity responseEntity = userController.getUserInfo(ObjectBuilder.getUserId());
 

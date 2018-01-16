@@ -1,7 +1,7 @@
 package com.jkg.www.outofahat.database;
 
-import com.jkg.www.outofahat.database.dbObjects.OutOfAHatInfoDbo;
-import com.jkg.www.outofahat.database.dbObjects.ParticipantDbo;
+import com.jkg.www.outofahat.database.objects.OutOfAHatInfoDbo;
+import com.jkg.www.outofahat.database.objects.ParticipantDbo;
 
 import java.util.List;
 

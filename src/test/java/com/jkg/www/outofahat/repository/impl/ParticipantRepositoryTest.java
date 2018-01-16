@@ -1,8 +1,7 @@
 package com.jkg.www.outofahat.repository.impl;
 
-
 import com.jkg.www.outofahat.database.IOutOfAHatInfoConnector;
-import com.jkg.www.outofahat.database.dbObjects.ParticipantDbo;
+import com.jkg.www.outofahat.database.objects.ParticipantDbo;
 import com.jkg.www.outofahat.service.valueobject.NewParticipantRequest;
 import com.jkg.www.outofahat.service.valueobject.model.Participant;
 import com.jkg.www.outofahat.testutils.ObjectBuilder;
@@ -62,7 +61,8 @@ public class ParticipantRepositoryTest {
 
     @Test
     public void test_getParticipants() {
-        List<ParticipantDbo> participantDboList = Arrays.asList(ObjectBuilder.buildParticipantDbo(), ObjectBuilder.buildParticipantDbo());
+        List<ParticipantDbo> participantDboList = Arrays.asList(ObjectBuilder.buildParticipantDbo(),
+            ObjectBuilder.buildParticipantDbo());
         when(outOfAHatInfoConnector.getParticipants(userId)).thenReturn(participantDboList);
 
         List<Participant> participants = repository.getParticipants(userId);

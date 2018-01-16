@@ -9,6 +9,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class ResponseEntityMapper {
 
+    /**
+     * Map message object to a new ResonseEntity.  Will check the for success.
+     * If the message is not successful, a status code of INTERNAL_SERVER_ERROR is returned.
+     * @param message message object extending IResponseMessage.
+     * @return a ResponseEntity.
+     */
     public <T extends IResponseMessage> ResponseEntity<T> map(T message) {
         if (message.isSuccessful()) {
             return ResponseEntity.ok(message);
@@ -17,7 +23,15 @@ public class ResponseEntityMapper {
         }
     }
 
-    public <T extends IResponseMessage> ResponseEntity<T> mapWithHeaders(T message, HttpStatus successStatus, HttpHeaders httpHeaders) {
+    /**
+     * Map message object to a new ResonseEntity.  Will check the for success the supplied success status
+     * is set in the new ResonseEntity. If the it is not successful, a status code of INTERNAL_SERVER_ERROR is returned.
+     * @param message message object extending IResponseMessage.
+     * @return a ResponseEntity.
+     */
+    public <T extends IResponseMessage> ResponseEntity<T> mapWithHeaders(T message,
+                                                                         HttpStatus successStatus,
+                                                                         HttpHeaders httpHeaders) {
         if (message.isSuccessful()) {
             return ResponseEntity.status(successStatus).headers(httpHeaders).build();
         } else {

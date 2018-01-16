@@ -35,8 +35,8 @@ public class UserController {
     @RequestMapping(path = "/v1/user/create", produces = "application/json", method = RequestMethod.POST)
     @ApiOperation(value = "create user", nickname = "create user")
     @ApiResponses(value = {
-            @ApiResponse(code = 201, message = "Success", response = ServiceResponse.class),
-            @ApiResponse(code = 500, message = "Error", response = ServiceResponse.class)})
+        @ApiResponse(code = 201, message = "Success", response = ServiceResponse.class),
+        @ApiResponse(code = 500, message = "Error", response = ServiceResponse.class)})
     @ResponseBody
     public ResponseEntity<? extends IResponseMessage> createUser(@RequestBody NewUserRequest newUserRequest) {
         ServiceResponse response = userService.createUser(newUserRequest);
@@ -50,8 +50,8 @@ public class UserController {
     @RequestMapping(path = "/v1/user/{userId}/info", produces = "application/json", method = RequestMethod.GET)
     @ApiOperation(value = "get user", nickname = "get user")
     @ApiResponses(value = {
-            @ApiResponse(code = 201, message = "Success", response = ServiceResponse.class),
-            @ApiResponse(code = 500, message = "Error", response = ServiceResponse.class)})
+        @ApiResponse(code = 201, message = "Success", response = ServiceResponse.class),
+        @ApiResponse(code = 500, message = "Error", response = ServiceResponse.class)})
     @ResponseBody
     public ResponseEntity<? extends IResponseMessage> getUserInfo(@PathVariable("userId") String userId) {
         ServiceResponse response = userService.getUserInfo(userId);

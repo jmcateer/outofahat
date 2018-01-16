@@ -1,7 +1,7 @@
 package com.jkg.www.outofahat.repository.impl;
 
 import com.jkg.www.outofahat.database.IOutOfAHatInfoConnector;
-import com.jkg.www.outofahat.database.dbObjects.OutOfAHatInfoDbo;
+import com.jkg.www.outofahat.database.objects.OutOfAHatInfoDbo;
 import com.jkg.www.outofahat.service.valueobject.NewUserRequest;
 import com.jkg.www.outofahat.service.valueobject.model.UserInfo;
 import com.jkg.www.outofahat.testutils.ObjectBuilder;
@@ -36,7 +36,7 @@ public class UserRepositoryTest {
         String id = ObjectBuilder.getUserId();
         when(connector.createUser(any(OutOfAHatInfoDbo.class))).thenReturn(id);
 
-        NewUserRequest userRequest = new NewUserRequest("userName", "password", "first", "last", "e@mail.com", "4255556666");
+        NewUserRequest userRequest = new NewUserRequest("userName", "password", "first", "last", "e@mail.com", "42555");
         String result = repository.createUser(userRequest);
 
         assertEquals(id, result);

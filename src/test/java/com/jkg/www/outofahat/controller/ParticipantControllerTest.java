@@ -42,7 +42,8 @@ public class ParticipantControllerTest {
         NewParticipantRequest participantRequest = ObjectBuilder.buildNewParticipantRequest();
         String participantId = "Ron_Weasley";
         String userId = ObjectBuilder.getUserId();
-        when(participantService.createParticipant(userId, participantRequest)).thenReturn(ServiceResponse.success(participantId));
+        when(participantService.createParticipant(userId, participantRequest))
+            .thenReturn(ServiceResponse.success(participantId));
 
         ResponseEntity responseEntity = controller.createParticipant(userId, participantRequest);
 
@@ -57,7 +58,7 @@ public class ParticipantControllerTest {
         NewParticipantRequest participantRequest = ObjectBuilder.buildNewParticipantRequest();
         String userId = ObjectBuilder.getUserId();
         when(participantService.createParticipant(userId, participantRequest))
-                .thenReturn(ServiceResponse.failure(new ErrorDetails(42, "doh")));
+            .thenReturn(ServiceResponse.failure(new ErrorDetails(42, "doh")));
 
         ResponseEntity responseEntity = controller.createParticipant(userId, participantRequest);
 
@@ -91,7 +92,8 @@ public class ParticipantControllerTest {
     @Test
     public void test_getUserInfo_fail() {
         String userId = ObjectBuilder.getUserId();
-        when(participantService.getParticipants(userId)).thenReturn(ServiceResponse.failure(new ErrorDetails(42, "doh")));
+        when(participantService.getParticipants(userId))
+            .thenReturn(ServiceResponse.failure(new ErrorDetails(42, "doh")));
 
         ResponseEntity responseEntity = controller.getParticipants(userId);
 

@@ -27,9 +27,8 @@ import static org.mockito.Mockito.when;
 import static org.mockito.internal.verification.VerificationModeFactory.times;
 
 public class ParticipantServiceTest {
-    private final String userId = ObjectBuilder.getUserId();
     private static final String participantId = "Ron_Weasley";
-
+    private final String userId = ObjectBuilder.getUserId();
     private ParticipantService service;
     @Mock
     private Logger logger;
@@ -59,7 +58,8 @@ public class ParticipantServiceTest {
     @Test
     public void test_createParticipant_fail() {
         NewParticipantRequest participantRequest = ObjectBuilder.buildNewParticipantRequest();
-        when(participantRepository.createParticipant(userId, participantRequest)).thenThrow(new RuntimeException("doh"));
+        when(participantRepository.createParticipant(userId, participantRequest))
+            .thenThrow(new RuntimeException("doh"));
 
         ServiceResponse<String> response = service.createParticipant(userId, participantRequest);
 
