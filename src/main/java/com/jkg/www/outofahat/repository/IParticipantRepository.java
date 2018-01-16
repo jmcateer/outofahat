@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface IParticipantRepository {
     String createParticipant(final String userId, final NewParticipantRequest participantRequest);
+
     List<Participant> getParticipants(final String userId);
 }

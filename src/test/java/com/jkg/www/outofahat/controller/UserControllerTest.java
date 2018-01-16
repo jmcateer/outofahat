@@ -26,8 +26,6 @@ public class UserControllerTest {
     private IUserService userService;
     private ResponseEntityMapper responseEntityMapper = new ResponseEntityMapper();
 
-    private final String userId = "5a55a7a7bf24bb3794378b80";
-
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
@@ -64,9 +62,9 @@ public class UserControllerTest {
     @Test
     public void test_getUserInfo() {
         UserInfo userInfo = ObjectBuilder.buildUserInfo();
-        when(userService.getUserInfo(userId)).thenReturn(ServiceResponse.success(userInfo));
+        when(userService.getUserInfo(ObjectBuilder.getUserId())).thenReturn(ServiceResponse.success(userInfo));
 
-        ResponseEntity responseEntity = userController.getUserInfo(userId);
+        ResponseEntity responseEntity = userController.getUserInfo(ObjectBuilder.getUserId());
 
         assertNotNull(responseEntity);
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
@@ -78,9 +76,9 @@ public class UserControllerTest {
 
     @Test
     public void test_getUserInfo_fail() {
-        when(userService.getUserInfo(userId)).thenReturn(ServiceResponse.failure(new ErrorDetails(42, "doh")));
+        when(userService.getUserInfo(ObjectBuilder.getUserId())).thenReturn(ServiceResponse.failure(new ErrorDetails(42, "doh")));
 
-        ResponseEntity responseEntity = userController.getUserInfo(userId);
+        ResponseEntity responseEntity = userController.getUserInfo(ObjectBuilder.getUserId());
 
         assertNotNull(responseEntity);
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, responseEntity.getStatusCode());

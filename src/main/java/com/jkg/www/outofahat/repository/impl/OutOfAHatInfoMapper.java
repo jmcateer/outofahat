@@ -57,11 +57,11 @@ public class OutOfAHatInfoMapper {
     public String createParticipantId(String first, String last, List<ParticipantDbo> participants) {
         String completedId = first + "_" + last;
         final String id = completedId;
-        if(participants != null) {
+        if (participants != null) {
             Optional<ParticipantDbo> optional = participants.stream()
                     .filter(participant -> participant.getId().equals(id))
                     .findFirst();
-            if(optional.isPresent()) {
+            if (optional.isPresent()) {
                 Random ran = new Random();
                 completedId = id + "-" + ran.nextInt(9999);
             }

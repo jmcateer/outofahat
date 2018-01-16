@@ -3,22 +3,15 @@ package com.jkg.www.outofahat.database.impl;
 import com.jkg.www.outofahat.database.IOutOfAHatInfoConnector;
 import com.jkg.www.outofahat.database.dbObjects.OutOfAHatInfoDbo;
 import com.jkg.www.outofahat.database.dbObjects.ParticipantDbo;
-import com.mongodb.MongoClient;
-import com.mongodb.MongoClientURI;
 import org.bson.types.ObjectId;
-import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Key;
-import org.mongodb.morphia.Morphia;
 import org.mongodb.morphia.query.Query;
 import org.mongodb.morphia.query.UpdateOperations;
 import org.mongodb.morphia.query.UpdateResults;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.Assert;
 
-import javax.annotation.PostConstruct;
 import java.util.List;
 
 @Repository
@@ -31,19 +24,23 @@ public class OutOfAHatInfoConnector extends MongoConnector<OutOfAHatInfoDbo> imp
     protected String getDbName() {
         return dbName;
     }
+
+    public void setDbName(String dbName) {
+        this.dbName = dbName;
+    }
+
     @Override
     protected String getUri() {
         return uri;
     }
-    @Override
-    protected Class<OutOfAHatInfoDbo> getDboClass() {
-        return OutOfAHatInfoDbo.class;
-    }
+
     public void setUri(String uri) {
         this.uri = uri;
     }
-    public void setDbName(String dbName) {
-        this.dbName = dbName;
+
+    @Override
+    protected Class<OutOfAHatInfoDbo> getDboClass() {
+        return OutOfAHatInfoDbo.class;
     }
 
     @Override

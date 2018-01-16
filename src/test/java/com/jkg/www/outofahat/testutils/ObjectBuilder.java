@@ -1,8 +1,9 @@
 package com.jkg.www.outofahat.testutils;
 
 import com.jkg.www.outofahat.database.dbObjects.ContactInfoDbo;
-import com.jkg.www.outofahat.database.dbObjects.ParticipantDbo;
 import com.jkg.www.outofahat.database.dbObjects.OutOfAHatInfoDbo;
+import com.jkg.www.outofahat.database.dbObjects.ParticipantDbo;
+import com.jkg.www.outofahat.service.valueobject.NewParticipantRequest;
 import com.jkg.www.outofahat.service.valueobject.NewUserRequest;
 import com.jkg.www.outofahat.service.valueobject.model.ContactInfo;
 import com.jkg.www.outofahat.service.valueobject.model.UserInfo;
@@ -42,6 +43,10 @@ public class ObjectBuilder {
 
     public static NewUserRequest buildNewUserRequest() {
         return new NewUserRequest("userName", "password", "first", "last", "e@mail.com", "4255556666");
+    }
+
+    public static NewParticipantRequest buildNewParticipantRequest() {
+        return new NewParticipantRequest("first", "last", "e@mail.com", "4255556666", new ArrayList<>(), new ArrayList<>());
     }
 
     public static UserInfo buildUserInfo() {

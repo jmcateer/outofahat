@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -42,7 +41,7 @@ public class UserController {
     public ResponseEntity<? extends IResponseMessage> createUser(@RequestBody NewUserRequest newUserRequest) {
         ServiceResponse response = userService.createUser(newUserRequest);
         HttpHeaders httpHeaders = new HttpHeaders();
-        if(response.isSuccessful()) {
+        if (response.isSuccessful()) {
             httpHeaders.set("id", (String) response.getValue());
         }
         return responseEntityMapper.mapWithHeaders(response, HttpStatus.CREATED, httpHeaders);

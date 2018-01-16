@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class ResponseEntityMapper {
 
     public <T extends IResponseMessage> ResponseEntity<T> map(T message) {
-        if(message.isSuccessful()) {
+        if (message.isSuccessful()) {
             return ResponseEntity.ok(message);
         } else {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(message);
@@ -18,7 +18,7 @@ public class ResponseEntityMapper {
     }
 
     public <T extends IResponseMessage> ResponseEntity<T> mapWithHeaders(T message, HttpStatus successStatus, HttpHeaders httpHeaders) {
-        if(message.isSuccessful()) {
+        if (message.isSuccessful()) {
             return ResponseEntity.status(successStatus).headers(httpHeaders).build();
         } else {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(message);
