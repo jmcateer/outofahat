@@ -32,8 +32,6 @@ public class UserServiceTest {
     @Mock
     private Logger logger;
 
-    private final String userId = "5a55a7a7bf24bb3794378b80";
-
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
@@ -69,26 +67,26 @@ public class UserServiceTest {
     @Test
     public void test_getUserInfo() {
         UserInfo userInfo = ObjectBuilder.buildUserInfo();
-        when(userRepository.getUserInfo(eq(userId))).thenReturn(userInfo);
+        when(userRepository.getUserInfo(eq(ObjectBuilder.getUserId()))).thenReturn(userInfo);
 
-        ServiceResponse response = service.getUserInfo(userId);
+        ServiceResponse response = service.getUserInfo(ObjectBuilder.getUserId());
 
         assertTrue(response.isSuccessful());
         assertNotNull(response.getValue());
-        verify(userRepository, times(1)).getUserInfo(eq(userId));
+        verify(userRepository, times(1)).getUserInfo(eq(ObjectBuilder.getUserId()));
     }
 
     @Test
     public void test_getUserInfo_fail() {
-        when(userRepository.getUserInfo(eq(userId))).thenReturn(null);
+        when(userRepository.getUserInfo(eq(ObjectBuilder.getUserId()))).thenReturn(null);
 
-        ServiceResponse response = service.getUserInfo(userId);
+        ServiceResponse response = service.getUserInfo(ObjectBuilder.getUserId());
 
         assertFalse(response.isSuccessful());
         assertNotNull(response.getErrorDetails());
         assertEquals(SystemEvent.USER_FIND_ERROR.getId(), response.getErrorDetails().getErrorCode());
         verify(logger, times(1)).error(anyString(), any(Throwable.class));
-        verify(userRepository, times(1)).getUserInfo(eq(userId));
+        verify(userRepository, times(1)).getUserInfo(eq(ObjectBuilder.getUserId()));
     }
 
 }

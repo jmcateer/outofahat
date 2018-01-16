@@ -12,11 +12,13 @@ public abstract class MongoConnector<T> {
     private Datastore datastore;
 
     protected abstract String getDbName();
+
     protected abstract String getUri();
+
     protected abstract Class<T> getDboClass();
 
     @PostConstruct
-    public void setup(){
+    public void setup() {
         final MongoClientURI mongoClientURI = new MongoClientURI(getUri());
         final MongoClient mongoClient = new MongoClient(mongoClientURI);
         final Morphia morphia = new Morphia();

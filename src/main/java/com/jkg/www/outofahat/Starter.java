@@ -12,7 +12,7 @@ import org.springframework.core.io.DefaultResourceLoader;
 
 @SpringBootApplication
 @ComponentScan("com.jkg.www.outofahat")
-@EnableAutoConfiguration(exclude={MongoAutoConfiguration.class})
+@EnableAutoConfiguration(exclude = {MongoAutoConfiguration.class})
 public class Starter extends SpringBootServletInitializer {
 
     public static void main(String... args) {

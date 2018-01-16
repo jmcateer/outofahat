@@ -41,7 +41,7 @@ public class ParticipantController {
     public ResponseEntity<? extends IResponseMessage> createParticipant(@PathVariable String userId, @RequestBody NewParticipantRequest newParticipantRequest) {
         ServiceResponse response = participantService.createParticipant(userId, newParticipantRequest);
         HttpHeaders httpHeaders = new HttpHeaders();
-        if(response.isSuccessful()) {
+        if (response.isSuccessful()) {
             httpHeaders.set("participantId", (String) response.getValue());
         }
         return responseEntityMapper.mapWithHeaders(response, HttpStatus.CREATED, httpHeaders);
@@ -53,7 +53,7 @@ public class ParticipantController {
             @ApiResponse(code = 201, message = "Success", response = ServiceResponse.class),
             @ApiResponse(code = 500, message = "Error", response = ServiceResponse.class)})
     @ResponseBody
-    public ResponseEntity<? extends IResponseMessage> getUserInfo(@PathVariable("userId") String userId) {
+    public ResponseEntity<? extends IResponseMessage> getParticipants(@PathVariable("userId") String userId) {
         ServiceResponse response = participantService.getParticipants(userId);
         return responseEntityMapper.map(response);
     }

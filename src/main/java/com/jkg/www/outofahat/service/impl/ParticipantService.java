@@ -25,7 +25,7 @@ public class ParticipantService implements IParticipantService {
     }
 
     @Override
-    public ServiceResponse createParticipant(String userId, NewParticipantRequest newParticipantRequest) {
+    public ServiceResponse<String> createParticipant(String userId, NewParticipantRequest newParticipantRequest) {
         try {
             String participantId = participantRepository.createParticipant(userId, newParticipantRequest);
             Assert.notNull(participantId, "failed to add participant to " + userId);
@@ -36,10 +36,10 @@ public class ParticipantService implements IParticipantService {
     }
 
     @Override
-    public ServiceResponse getParticipants(final String userId) {
+    public ServiceResponse<GenericUserResponse<List<Participant>>> getParticipants(final String userId) {
         try {
             List<Participant> participants = participantRepository.getParticipants(userId);
-            GenericUserResponse response = new GenericUserResponse(userId, participants);
+            GenericUserResponse<List<Participant>> response = new GenericUserResponse(userId, participants);
             return ServiceResponse.success(response);
         } catch (Exception ex) {
             return ServiceResponseMapper.failure(logger, SystemEvent.PARTICIPANT_RETIRIEVE_FAIL, ex);
