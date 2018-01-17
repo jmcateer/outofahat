@@ -12,11 +12,12 @@ apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'war'
 apply plugin: 'groovy'
+apply plugin: 'java-library'
+apply plugin: 'org.junit.platform.gradle.plugin'
 
 apply from: 'gradle/jacoco.gradle'
 apply from: 'gradle/findbugs.gradle'
 apply from: 'gradle/checkstyle.gradle'
-
 
 sourceCompatibility = 1.8
 
@@ -30,6 +31,7 @@ buildscript {
     }
     dependencies {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:1.5.9.RELEASE"
+        classpath 'org.junit.platform:junit-platform-gradle-plugin:1.0.3'
     }
 }
 
@@ -46,20 +48,17 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-configuration-processor'
     compile 'org.springframework.boot:spring-boot-starter-log4j2'
     compile 'org.thymeleaf:thymeleaf-spring4'
-
     compile 'org.projectlombok:lombok:1.16.18'
-
     compile 'org.mongodb:mongodb-driver:3.6.1'
     compile 'org.mongodb.morphia:morphia:1.3.2'
-
     compile 'io.springfox:springfox-swagger2:2.6.0'
     compile 'io.springfox:springfox-swagger-ui:2.6.0'
 
-    testCompile 'junit:junit:4.12'
-    testCompile 'org.junit.jupiter:junit-jupiter-api:5.1.0-M1'
     testCompile 'org.mockito:mockito-all:1.10.19'
     testCompile 'org.springframework:spring-test:5.0.2.RELEASE'
+    testCompile 'org.junit.jupiter:junit-jupiter-api:5.1.0-M1'
 
+    testRuntime 'org.junit.jupiter:junit-jupiter-engine:5.1.0-M1'
 }
 
 war {
@@ -90,3 +89,4 @@ bootRun {
     }
     jvmArgs=["-Dproject.name=${project.name}", "-Dapplication.name=${project.name}", '-Dapplication.environment=dev', '-Dapplication.home=.', '-Xdebug', '-Xrunjdwp:server=y,transport=dt_socket,address=5005,suspend=n']
 }
+

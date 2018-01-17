@@ -7,8 +7,8 @@ import com.jkg.www.outofahat.service.valueobject.NewParticipantRequest;
 import com.jkg.www.outofahat.service.valueobject.ServiceResponse;
 import com.jkg.www.outofahat.service.valueobject.model.Participant;
 import com.jkg.www.outofahat.testutils.ObjectBuilder;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
@@ -17,13 +17,14 @@ import org.springframework.http.ResponseEntity;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+
 
 public class ParticipantControllerTest {
     private ParticipantController controller;
@@ -31,7 +32,7 @@ public class ParticipantControllerTest {
     private IParticipantService participantService;
     private ResponseEntityMapper responseEntityMapper = new ResponseEntityMapper();
 
-    @Before
+    @BeforeEach
     public void setup() {
         MockitoAnnotations.initMocks(this);
         controller = new ParticipantController(participantService, responseEntityMapper);

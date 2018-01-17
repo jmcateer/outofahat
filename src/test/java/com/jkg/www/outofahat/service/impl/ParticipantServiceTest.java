@@ -6,8 +6,8 @@ import com.jkg.www.outofahat.service.valueobject.NewParticipantRequest;
 import com.jkg.www.outofahat.service.valueobject.ServiceResponse;
 import com.jkg.www.outofahat.service.valueobject.model.Participant;
 import com.jkg.www.outofahat.testutils.ObjectBuilder;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.slf4j.Logger;
@@ -16,10 +16,10 @@ import org.springframework.test.util.ReflectionTestUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.verify;
@@ -35,7 +35,7 @@ public class ParticipantServiceTest {
     @Mock
     private IParticipantRepository participantRepository;
 
-    @Before
+    @BeforeEach
     public void setup() {
         MockitoAnnotations.initMocks(this);
         service = new ParticipantService(participantRepository);

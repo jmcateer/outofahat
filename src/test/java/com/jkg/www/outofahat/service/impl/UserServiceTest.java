@@ -5,18 +5,18 @@ import com.jkg.www.outofahat.service.valueobject.NewUserRequest;
 import com.jkg.www.outofahat.service.valueobject.ServiceResponse;
 import com.jkg.www.outofahat.service.valueobject.model.UserInfo;
 import com.jkg.www.outofahat.testutils.ObjectBuilder;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.slf4j.Logger;
 import org.springframework.test.util.ReflectionTestUtils;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Matchers.eq;
@@ -32,7 +32,7 @@ public class UserServiceTest {
     @Mock
     private Logger logger;
 
-    @Before
+    @BeforeEach
     public void setup() {
         MockitoAnnotations.initMocks(this);
         ReflectionTestUtils.setField(service, "logger", logger);
