@@ -1,17 +1,17 @@
 package com.jkg.www.outofahat.repository.impl;
 
 import com.jkg.www.outofahat.database.IOutOfAHatInfoConnector;
-import com.jkg.www.outofahat.database.dbObjects.OutOfAHatInfoDbo;
+import com.jkg.www.outofahat.database.objects.OutOfAHatInfoDbo;
 import com.jkg.www.outofahat.service.valueobject.NewUserRequest;
 import com.jkg.www.outofahat.service.valueobject.model.UserInfo;
 import com.jkg.www.outofahat.testutils.ObjectBuilder;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.eq;
@@ -25,7 +25,7 @@ public class UserRepositoryTest {
     @Mock
     private IOutOfAHatInfoConnector connector;
 
-    @Before
+    @BeforeEach
     public void setup() {
         MockitoAnnotations.initMocks(this);
         repository = new UserRepository(connector, new OutOfAHatInfoMapper());
@@ -36,7 +36,7 @@ public class UserRepositoryTest {
         String id = ObjectBuilder.getUserId();
         when(connector.createUser(any(OutOfAHatInfoDbo.class))).thenReturn(id);
 
-        NewUserRequest userRequest = new NewUserRequest("userName", "password", "first", "last", "e@mail.com", "4255556666");
+        NewUserRequest userRequest = new NewUserRequest("userName", "password", "first", "last", "e@mail.com", "42555");
         String result = repository.createUser(userRequest);
 
         assertEquals(id, result);

@@ -16,7 +16,7 @@ import java.util.List;
 @Getter
 public class Participant {
     @NonNull
-    private String Id;
+    private String id;
     @NonNull
     private ContactInfo contactInfo;
     @NonNull

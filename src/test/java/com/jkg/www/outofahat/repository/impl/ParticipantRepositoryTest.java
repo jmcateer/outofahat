@@ -1,22 +1,21 @@
 package com.jkg.www.outofahat.repository.impl;
 
-
 import com.jkg.www.outofahat.database.IOutOfAHatInfoConnector;
-import com.jkg.www.outofahat.database.dbObjects.ParticipantDbo;
+import com.jkg.www.outofahat.database.objects.ParticipantDbo;
 import com.jkg.www.outofahat.service.valueobject.NewParticipantRequest;
 import com.jkg.www.outofahat.service.valueobject.model.Participant;
 import com.jkg.www.outofahat.testutils.ObjectBuilder;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.verify;
@@ -31,7 +30,7 @@ public class ParticipantRepositoryTest {
     private IOutOfAHatInfoConnector outOfAHatInfoConnector;
     private OutOfAHatInfoMapper outOfAHatInfoMapper = new OutOfAHatInfoMapper();
 
-    @Before
+    @BeforeEach
     public void setup() {
         MockitoAnnotations.initMocks(this);
         repository = new ParticipantRepository(outOfAHatInfoConnector, outOfAHatInfoMapper);
@@ -62,7 +61,8 @@ public class ParticipantRepositoryTest {
 
     @Test
     public void test_getParticipants() {
-        List<ParticipantDbo> participantDboList = Arrays.asList(ObjectBuilder.buildParticipantDbo(), ObjectBuilder.buildParticipantDbo());
+        List<ParticipantDbo> participantDboList = Arrays.asList(ObjectBuilder.buildParticipantDbo(),
+            ObjectBuilder.buildParticipantDbo());
         when(outOfAHatInfoConnector.getParticipants(userId)).thenReturn(participantDboList);
 
         List<Participant> participants = repository.getParticipants(userId);

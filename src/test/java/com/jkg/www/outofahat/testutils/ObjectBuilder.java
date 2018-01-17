@@ -1,8 +1,8 @@
 package com.jkg.www.outofahat.testutils;
 
-import com.jkg.www.outofahat.database.dbObjects.ContactInfoDbo;
-import com.jkg.www.outofahat.database.dbObjects.OutOfAHatInfoDbo;
-import com.jkg.www.outofahat.database.dbObjects.ParticipantDbo;
+import com.jkg.www.outofahat.database.objects.ContactInfoDbo;
+import com.jkg.www.outofahat.database.objects.OutOfAHatInfoDbo;
+import com.jkg.www.outofahat.database.objects.ParticipantDbo;
 import com.jkg.www.outofahat.service.valueobject.NewParticipantRequest;
 import com.jkg.www.outofahat.service.valueobject.NewUserRequest;
 import com.jkg.www.outofahat.service.valueobject.model.ContactInfo;
@@ -21,11 +21,11 @@ public class ObjectBuilder {
 
     public static OutOfAHatInfoDbo buildOutOfAHatInfoDbo() {
         OutOfAHatInfoDbo outOfAHatInfoDbo = new OutOfAHatInfoDbo(
-                "userName",
-                "password",
-                buildContactInfoDbo(),
-                Arrays.asList(buildParticipantDbo()),
-                new ArrayList<>()
+            "userName",
+            "password",
+            buildContactInfoDbo(),
+            Arrays.asList(buildParticipantDbo()),
+            new ArrayList<>()
         );
         outOfAHatInfoDbo.setId(new ObjectId(userId));
         return outOfAHatInfoDbo;
@@ -46,7 +46,8 @@ public class ObjectBuilder {
     }
 
     public static NewParticipantRequest buildNewParticipantRequest() {
-        return new NewParticipantRequest("first", "last", "e@mail.com", "4255556666", new ArrayList<>(), new ArrayList<>());
+        return new NewParticipantRequest("first", "last", "e@mail.com", "4255556666",
+            new ArrayList<>(), new ArrayList<>());
     }
 
     public static UserInfo buildUserInfo() {

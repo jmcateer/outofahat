@@ -19,8 +19,8 @@ public abstract class MongoConnector<T> {
 
     @PostConstruct
     public void setup() {
-        final MongoClientURI mongoClientURI = new MongoClientURI(getUri());
-        final MongoClient mongoClient = new MongoClient(mongoClientURI);
+        final MongoClientURI mongoClientUri = new MongoClientURI(getUri());
+        final MongoClient mongoClient = new MongoClient(mongoClientUri);
         final Morphia morphia = new Morphia();
         datastore = morphia.mapPackageFromClass(getDboClass()).createDatastore(mongoClient, getDbName());
         datastore.ensureIndexes();

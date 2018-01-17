@@ -22,8 +22,8 @@ public class Starter extends SpringBootServletInitializer {
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
         builder
-                .banner(new ResourceBanner(new DefaultResourceLoader().getResource("banner.text")))
-                .sources(Starter.class);
+            .banner(new ResourceBanner(new DefaultResourceLoader().getResource("banner.text")))
+            .sources(Starter.class);
         return builder;
     }
 }

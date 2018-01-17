@@ -1,5 +1,29 @@
 apply plugin: 'jacoco'
 
+afterEvaluate {
+    def junitPlatformTestTask = (JavaExec) project.tasks.getByName('junitPlatformTest')
+
+    jacoco {
+        applyTo(junitPlatformTestTask)
+    }
+
+    project.task(type: JacocoReport, "jacocoJupTestReport") {
+        executionData(junitPlatformTestTask)
+        sourceSets(sourceSets.main)
+        sourceDirectories = files(sourceSets.main.allSource.srcDirs)
+        classDirectories = files(sourceSets.main.output)
+
+        reports {
+            xml.enabled true
+            xml.destination file("${buildDir}/reports/jacoco/report.xml")
+            html.enabled true
+            html.destination file("${buildDir}/reports/jacoco/html")
+        }
+    }
+
+    check.dependsOn jacocoJupTestReport
+}
+
 test {
     jacoco {
         dumpOnExit = true
@@ -17,3 +41,4 @@ jacocoTestReport.group = 'Code Coverage'
 jacocoTestReport.description = 'Run code converage for all modules and all custom tasks'
 
 check.dependsOn jacocoTestReport
+
