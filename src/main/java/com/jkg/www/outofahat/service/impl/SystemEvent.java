@@ -6,7 +6,9 @@ public enum SystemEvent {
     USER_FIND_ERROR(1001, "Failed to find user info."),
 
     PARTICIPANT_ADD_FAIL(2000, "Failed to add participant."),
-    PARTICIPANT_RETIRIEVE_FAIL(2001, "Failed to retrieve participants.");
+    PARTICIPANT_RETIRIEVE_FAIL(2001, "Failed to retrieve participants."),
+
+    EVENT_CREATE_FAIL(3000, "Failed to create new event.");
 
     private int id;
     private String description;
