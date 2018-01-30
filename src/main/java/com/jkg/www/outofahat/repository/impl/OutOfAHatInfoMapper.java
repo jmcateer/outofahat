@@ -1,11 +1,13 @@
 package com.jkg.www.outofahat.repository.impl;
 
 import com.jkg.www.outofahat.database.objects.ContactInfoDbo;
+import com.jkg.www.outofahat.database.objects.EventInfoDbo;
 import com.jkg.www.outofahat.database.objects.OutOfAHatInfoDbo;
 import com.jkg.www.outofahat.database.objects.ParticipantDbo;
 import com.jkg.www.outofahat.service.valueobject.NewParticipantRequest;
 import com.jkg.www.outofahat.service.valueobject.NewUserRequest;
 import com.jkg.www.outofahat.service.valueobject.model.ContactInfo;
+import com.jkg.www.outofahat.service.valueobject.model.EventInfo;
 import com.jkg.www.outofahat.service.valueobject.model.Participant;
 import com.jkg.www.outofahat.service.valueobject.model.UserInfo;
 import org.springframework.stereotype.Component;
@@ -138,5 +140,21 @@ public class OutOfAHatInfoMapper {
             contactInfoDbo.getLast(),
             contactInfoDbo.getEmail(),
             contactInfoDbo.getPhone());
+    }
+
+    public EventInfoDbo mapFromEventInfo(final EventInfo eventInfo) {
+        return new EventInfoDbo(
+            eventInfo.getName(),
+            eventInfo.getCreateDate(),
+            eventInfo.getEventDateTime(),
+            eventInfo.getMapping());
+    }
+
+    public EventInfo mapToEventInfo(final EventInfoDbo eventInfoDbo) {
+        return new EventInfo(
+            eventInfoDbo.getName(),
+            eventInfoDbo.getCreateDate(),
+            eventInfoDbo.getEventDateTime(),
+            eventInfoDbo.getMapping());
     }
 }
