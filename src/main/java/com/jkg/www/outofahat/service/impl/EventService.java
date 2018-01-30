@@ -1,7 +1,9 @@
 package com.jkg.www.outofahat.service.impl;
 
+import com.jkg.www.outofahat.repository.IEventRepository;
 import com.jkg.www.outofahat.repository.IParticipantRepository;
 import com.jkg.www.outofahat.service.IEventService;
+import com.jkg.www.outofahat.service.valueobject.NewEventRequest;
 import com.jkg.www.outofahat.service.valueobject.ServiceResponse;
 import com.jkg.www.outofahat.service.valueobject.model.EventInfo;
 import com.jkg.www.outofahat.service.valueobject.model.Participant;
@@ -14,7 +16,6 @@ import org.springframework.util.Assert;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -24,30 +25,62 @@ import java.util.stream.IntStream;
 public class EventService implements IEventService {
     private Logger logger = LoggerFactory.getLogger(EventService.class);
     private IParticipantRepository participantRepository;
+    private IEventRepository eventRepository;
 
     private static final int LIMIT = 50;
 
+    @Override
+    public ServiceResponse<List<EventInfo>> getEvents(String userId) {
+        try {
+            List<EventInfo> events = eventRepository.getEvents(userId);
+            return ServiceResponse.success(events);
+        } catch (Exception ex) {
+            return ServiceResponseMapper.failure(logger, SystemEvent.EVENT_FIND_FAIL, ex);
+        }
+    }
+
     @Autowired
-    public EventService(IParticipantRepository participantRepository) {
+    public EventService(IParticipantRepository participantRepository, IEventRepository eventRepository) {
         this.participantRepository = participantRepository;
+        this.eventRepository = eventRepository;
     }
 
     @Override
-    public ServiceResponse<EventInfo> createEvent(String userId) {
+    public ServiceResponse<EventInfo> createEvent(String userId, NewEventRequest eventRequest) {
         try {
-            List<Participant> participants = participantRepository.getParticipants(userId);
-            Map<String, String> map = shuffle(participants);
-            EventInfo eventInfo = new EventInfo("event", LocalDateTime.now(), LocalDateTime.now(), map);
+            List<String> keys = eventRequest.getParticipantIds();
+            List<Participant> participants = retrieveParticipants(userId, keys);
+            Map<String, String> map = createMapping(keys, participants);
+
+            EventInfo eventInfo = new EventInfo(eventRequest.getName(),
+                LocalDateTime.now(),
+                eventRequest.getEventDateTime(),
+                map);
+
             return ServiceResponse.success(eventInfo);
         } catch (Exception ex) {
             return ServiceResponseMapper.failure(logger, SystemEvent.EVENT_CREATE_FAIL, ex);
         }
     }
 
-    private Map<String, String> shuffle(List<Participant> participants) {
-        List<String> keys = participants.stream()
-            .map(participant -> participant.getId())
+    @Override
+    public ServiceResponse<String> saveEvent(String userId, EventInfo eventInfo) {
+        try {
+            String result = eventRepository.saveEventInfo(userId, eventInfo);
+            return ServiceResponse.success(result);
+        } catch (Exception ex) {
+            return ServiceResponseMapper.failure(logger, SystemEvent.EVENT_SAVE_FAIL, ex);
+        }
+    }
+
+    private List<Participant> retrieveParticipants(String userId, List<String> ids) {
+        List<Participant> participants = participantRepository.getParticipants(userId);
+        return participants.stream()
+            .filter(participant -> ids.contains(participant.getId()))
             .collect(Collectors.toList());
+    }
+
+    private Map<String, String> createMapping(List<String> keys, List<Participant> participants) {
         List<String> values = new ArrayList<>(keys);
 
         Map<String, String> map = null;
@@ -63,12 +96,12 @@ public class EventService implements IEventService {
     }
 
     private boolean isValidMapping(List<Participant> participants, Map<String, String> map) {
-        boolean result = true;
+        boolean result;
         if (map == null || map.isEmpty() || participants == null || participants.isEmpty()) {
             result = false;
         } else {
             result = !participants.stream()
-                    .anyMatch(participant -> isEligible(participant, map.get(participant.getId())) != true);
+                .anyMatch(participant -> isEligible(participant, map.get(participant.getId())) != true);
         }
         return result;
     }
@@ -80,7 +113,7 @@ public class EventService implements IEventService {
 
     private boolean isInList(Participant participant, String ineligible) {
         boolean inList = false;
-        if(participant.getIneligibles() != null) {
+        if (participant.getIneligibles() != null) {
             inList = participant.getIneligibles().contains(ineligible);
         }
         return inList;

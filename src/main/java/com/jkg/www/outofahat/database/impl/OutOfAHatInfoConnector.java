@@ -1,6 +1,7 @@
 package com.jkg.www.outofahat.database.impl;
 
 import com.jkg.www.outofahat.database.IOutOfAHatInfoConnector;
+import com.jkg.www.outofahat.database.objects.EventInfoDbo;
 import com.jkg.www.outofahat.database.objects.OutOfAHatInfoDbo;
 import com.jkg.www.outofahat.database.objects.ParticipantDbo;
 import org.bson.types.ObjectId;
@@ -75,6 +76,24 @@ public class OutOfAHatInfoConnector extends MongoConnector<OutOfAHatInfoDbo> imp
         OutOfAHatInfoDbo outOfAHatInfoDbo = query.get();
         Assert.notNull(outOfAHatInfoDbo, "unable to retrieve participants list for " + userId);
         return outOfAHatInfoDbo.getParticipants();
+    }
+
+    @Override
+    public List<EventInfoDbo> getEvents(String userId) {
+        Query<OutOfAHatInfoDbo> query = getUserIdQuery(userId);
+        query.project("events", true);
+        OutOfAHatInfoDbo outOfAHatInfoDbo = query.get();
+        Assert.notNull(outOfAHatInfoDbo, "unable to retrieve events list for " + userId);
+        return outOfAHatInfoDbo.getEvents();
+    }
+
+    @Override
+    public boolean saveEvent(String userId, EventInfoDbo eventInfoDbo) {
+        UpdateOperations<OutOfAHatInfoDbo> updateOperations = getDatastore()
+            .createUpdateOperations(OutOfAHatInfoDbo.class);
+        updateOperations.addToSet("events", eventInfoDbo);
+
+        return updateByUserId(userId, updateOperations);
     }
 
     private boolean updateByUserId(final String userId, UpdateOperations<OutOfAHatInfoDbo> updateOperations) {

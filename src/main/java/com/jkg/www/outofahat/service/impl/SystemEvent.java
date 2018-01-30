@@ -8,7 +8,9 @@ public enum SystemEvent {
     PARTICIPANT_ADD_FAIL(2000, "Failed to add participant."),
     PARTICIPANT_RETIRIEVE_FAIL(2001, "Failed to retrieve participants."),
 
-    EVENT_CREATE_FAIL(3000, "Failed to create new event.");
+    EVENT_CREATE_FAIL(3000, "Failed to create new event."),
+    EVENT_SAVE_FAIL(3001, "Failed to save event."),
+    EVENT_FIND_FAIL(3002, "Failed to find events.");
 
     private int id;
     private String description;
