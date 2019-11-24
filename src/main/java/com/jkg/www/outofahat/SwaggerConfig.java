@@ -2,6 +2,8 @@ package com.jkg.www.outofahat;
 
 import com.fasterxml.classmate.TypeResolver;
 import io.swagger.annotations.ApiOperation;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -18,9 +20,6 @@ import springfox.documentation.service.Parameter;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Configuration
 @EnableSwagger2
@@ -40,36 +39,36 @@ public class SwaggerConfig {
     public Docket api() {
         final TypeResolver typeResolver = new TypeResolver();
         final AlternateTypeRule alternateTypeRule = new AlternateTypeRule(
-            typeResolver.resolve(ResponseEntity.class), typeResolver.resolve(Void.class));
+                typeResolver.resolve(ResponseEntity.class), typeResolver.resolve(Void.class));
         return new Docket(DocumentationType.SWAGGER_2)
-            .apiInfo(apiInfo())
-            .alternateTypeRules(alternateTypeRule)
-            .useDefaultResponseMessages(false)
-            .select()
-            .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
-            .build()
-            .globalOperationParameters(globalOperationParameters());
+                .apiInfo(apiInfo())
+                .alternateTypeRules(alternateTypeRule)
+                .useDefaultResponseMessages(false)
+                .select()
+                .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
+                .build()
+                .globalOperationParameters(globalOperationParameters());
     }
 
     private ApiInfo apiInfo() {
         final Contact contact = new Contact(null, null, email);
         return new ApiInfoBuilder()
-            .title(title)
-            .description(description)
-            .version(version)
-            .contact(contact)
-            .build();
+                .title(title)
+                .description(description)
+                .version(version)
+                .contact(contact)
+                .build();
     }
 
     List<Parameter> globalOperationParameters() {
         final List<Parameter> parameters = new ArrayList<>();
         final Parameter authorization = new ParameterBuilder()
-            .name("Authorization")
-            .description("Authorization")
-            .modelRef(new ModelRef("string"))
-            .parameterType("header")
-            .required(true)
-            .build();
+                .name("Authorization")
+                .description("Authorization")
+                .modelRef(new ModelRef("string"))
+                .parameterType("header")
+                .required(true)
+                .build();
         parameters.add(authorization);
         return parameters;
     }

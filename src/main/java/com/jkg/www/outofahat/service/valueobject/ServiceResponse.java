@@ -6,6 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ServiceResponse<T> implements IResponseMessage {
+
     private boolean successful;
     private T value;
     private ErrorDetails errorDetails;

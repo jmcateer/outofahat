@@ -1,5 +1,12 @@
 package com.jkg.www.outofahat.controller;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Matchers.eq;
+import static org.mockito.Mockito.when;
+
 import com.jkg.www.outofahat.service.IUserService;
 import com.jkg.www.outofahat.service.valueobject.ErrorDetails;
 import com.jkg.www.outofahat.service.valueobject.NewUserRequest;
@@ -13,15 +20,9 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.when;
-
 
 public class UserControllerTest {
+
     private UserController userController;
     @Mock
     private IUserService userService;
@@ -78,7 +79,7 @@ public class UserControllerTest {
     @Test
     public void test_getUserInfo_fail() {
         when(userService.getUserInfo(ObjectBuilder.getUserId()))
-            .thenReturn(ServiceResponse.failure(new ErrorDetails(42, "doh")));
+                .thenReturn(ServiceResponse.failure(new ErrorDetails(42, "doh")));
 
         ResponseEntity responseEntity = userController.getUserInfo(ObjectBuilder.getUserId());
 

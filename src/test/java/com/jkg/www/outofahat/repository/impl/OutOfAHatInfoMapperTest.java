@@ -1,5 +1,10 @@
 package com.jkg.www.outofahat.repository.impl;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import com.jkg.www.outofahat.database.objects.OutOfAHatInfoDbo;
 import com.jkg.www.outofahat.database.objects.ParticipantDbo;
 import com.jkg.www.outofahat.service.valueobject.NewParticipantRequest;
@@ -7,16 +12,10 @@ import com.jkg.www.outofahat.service.valueobject.NewUserRequest;
 import com.jkg.www.outofahat.service.valueobject.model.Participant;
 import com.jkg.www.outofahat.service.valueobject.model.UserInfo;
 import com.jkg.www.outofahat.testutils.ObjectBuilder;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import java.util.Collections;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class OutOfAHatInfoMapperTest {
 
@@ -78,7 +77,7 @@ public class OutOfAHatInfoMapperTest {
 
         assertTrue(participantId.contains(first));
         assertTrue(participantId.contains(last));
-        assertNotEquals(participantDbo.getId(), participantId);
+        assertNotEquals(participantDbo.getParticipantId(), participantId);
     }
 
     @Test
@@ -101,7 +100,7 @@ public class OutOfAHatInfoMapperTest {
 
         Participant participant = mapper.mapToParticipant(participantDbo);
 
-        assertEquals(participantDbo.getId(), participant.getId());
+        assertEquals(participantDbo.getParticipantId(), participant.getId());
         assertEquals(participantDbo.getActive(), participant.getActive());
         assertEquals(participantDbo.getContactInfo().getFirst(), participant.getContactInfo().getFirst());
         assertEquals(participantDbo.getContactInfo().getLast(), participant.getContactInfo().getLast());

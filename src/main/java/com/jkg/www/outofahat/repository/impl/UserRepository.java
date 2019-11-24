@@ -11,11 +11,14 @@ import org.springframework.util.Assert;
 
 @Component
 public class UserRepository implements IUserRepository {
+
     private IOutOfAHatInfoConnector outOfAHatInfoConnector;
     private OutOfAHatInfoMapper outOfAHatInfoMapper;
 
     @Autowired
-    public UserRepository(IOutOfAHatInfoConnector outOfAHatInfoConnector, OutOfAHatInfoMapper outOfAHatInfoMapper) {
+    public UserRepository(
+            IOutOfAHatInfoConnector outOfAHatInfoConnector,
+            OutOfAHatInfoMapper outOfAHatInfoMapper) {
         this.outOfAHatInfoConnector = outOfAHatInfoConnector;
         this.outOfAHatInfoMapper = outOfAHatInfoMapper;
     }

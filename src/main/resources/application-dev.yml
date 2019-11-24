@@ -1,5 +1,20 @@
 test: "applcation-dev"
-
 mongo:
-  uri: "mongodb://outofahat-test:MeX8MGYxFbzjG9Dt7dKux2iJNiaq4ItSj4VxfGaWquVgW6T10vEkArxJtb0O0n5CWnrZDeDIfMpYtiWzGlomDg==@outofahat-test.documents.azure.com:10255/?ssl=true&replicaSet=globaldb"
-  dbName: "outofahat"
+  uri: "mongodb://localhost:27017"
+  dbName: "jkg"
+  
+spring:
+  mail:
+    properties:
+      mail:
+        smtp:
+          connecttimeout: 5000
+          timeout: 3000
+          writetimeout: 5000
+          starttls:
+            enable: true
+          auth: true
+    host: "smtp.office365.com"
+    username: "jmcateer@live.com"
+    password: "Kristina!1"
+    port: 587

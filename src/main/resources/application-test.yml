@@ -1,5 +1,21 @@
 test: "applcation-test"
 
 mongo:
-  uri: "mongodb://outofahat-test:MeX8MGYxFbzjG9Dt7dKux2iJNiaq4ItSj4VxfGaWquVgW6T10vEkArxJtb0O0n5CWnrZDeDIfMpYtiWzGlomDg==@outofahat-test.documents.azure.com:10255/?ssl=true&replicaSet=globaldb"
-  dbName: "outofahat"
+  uri: "mongodb://outofahat:b6zKrAC5AYSMmTc@clusterjkg-shard-00-00-n2pyq.mongodb.net:27017,clusterjkg-shard-00-01-n2pyq.mongodb.net:27017,clusterjkg-shard-00-02-n2pyq.mongodb.net:27017/test?ssl=true&replicaSet=ClusterJKG-shard-0&authSource=admin&retryWrites=true&w=majority"
+  dbName: "jkg"
+
+spring:
+  mail:
+    properties:
+      mail:
+        smtp:
+          connecttimeout: 5000
+          timeout: 3000
+          writetimeout: 5000
+          starttls:
+            enable: true
+          auth: true
+    host: "smtp.office365.com"
+    username: "jmcateer@live.com"
+    password: "Kristina!1"
+    port: 587
