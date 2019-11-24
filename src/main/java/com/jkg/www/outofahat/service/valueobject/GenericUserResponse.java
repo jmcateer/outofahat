@@ -8,6 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class GenericUserResponse<T> {
+
     private String userId;
     private T value;
 }

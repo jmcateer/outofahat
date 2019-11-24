@@ -7,9 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import org.mongodb.morphia.annotations.Embedded;
 
-@Embedded
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @NoArgsConstructor
@@ -17,6 +15,7 @@ import org.mongodb.morphia.annotations.Embedded;
 @Getter
 @Setter
 public class ContactInfoDbo {
+
     @NonNull
     private String first;
     @NonNull

@@ -4,20 +4,20 @@ import com.jkg.www.outofahat.database.IOutOfAHatInfoConnector;
 import com.jkg.www.outofahat.database.objects.EventInfoDbo;
 import com.jkg.www.outofahat.database.objects.OutOfAHatInfoDbo;
 import com.jkg.www.outofahat.database.objects.ParticipantDbo;
-import org.bson.types.ObjectId;
-import org.mongodb.morphia.Key;
-import org.mongodb.morphia.query.Query;
-import org.mongodb.morphia.query.UpdateOperations;
-import org.mongodb.morphia.query.UpdateResults;
+import dev.morphia.Key;
+import dev.morphia.query.Query;
+import dev.morphia.query.UpdateOperations;
+import dev.morphia.query.UpdateResults;
+import java.util.List;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.Assert;
-
-import java.util.List;
+import org.springframework.util.StringUtils;
 
 @Repository
 @ConfigurationProperties("mongo")
 public class OutOfAHatInfoConnector extends MongoConnector<OutOfAHatInfoDbo> implements IOutOfAHatInfoConnector {
+
     private String uri;
     private String dbName;
 
@@ -61,10 +61,23 @@ public class OutOfAHatInfoConnector extends MongoConnector<OutOfAHatInfoDbo> imp
     }
 
     @Override
-    public boolean addParticipant(String userId, ParticipantDbo participantDbo) {
+    public boolean addParticipant(
+            String userId,
+            ParticipantDbo participantDbo) {
         UpdateOperations<OutOfAHatInfoDbo> updateOperations = getDatastore()
-            .createUpdateOperations(OutOfAHatInfoDbo.class);
+                .createUpdateOperations(OutOfAHatInfoDbo.class);
         updateOperations.addToSet("participants", participantDbo);
+
+        return updateByUserId(userId, updateOperations);
+    }
+
+    @Override
+    public boolean updateParticipants(
+            String userId,
+            List<ParticipantDbo> participantDboList) {
+        UpdateOperations<OutOfAHatInfoDbo> updateOperations = getDatastore()
+                .createUpdateOperations(OutOfAHatInfoDbo.class);
+        updateOperations.set("participants", participantDboList);
 
         return updateByUserId(userId, updateOperations);
     }
@@ -88,24 +101,28 @@ public class OutOfAHatInfoConnector extends MongoConnector<OutOfAHatInfoDbo> imp
     }
 
     @Override
-    public boolean saveEvent(String userId, EventInfoDbo eventInfoDbo) {
+    public boolean saveEvent(
+            String userId,
+            EventInfoDbo eventInfoDbo) {
         UpdateOperations<OutOfAHatInfoDbo> updateOperations = getDatastore()
-            .createUpdateOperations(OutOfAHatInfoDbo.class);
+                .createUpdateOperations(OutOfAHatInfoDbo.class);
         updateOperations.addToSet("events", eventInfoDbo);
 
         return updateByUserId(userId, updateOperations);
     }
 
-    private boolean updateByUserId(final String userId, UpdateOperations<OutOfAHatInfoDbo> updateOperations) {
+    private boolean updateByUserId(
+            final String userId,
+            UpdateOperations<OutOfAHatInfoDbo> updateOperations) {
         final Query<OutOfAHatInfoDbo> query = getUserIdQuery(userId);
         UpdateResults updateResults = getDatastore().update(query, updateOperations);
         return updateResults.getUpdatedCount() > 0;
     }
 
     private Query<OutOfAHatInfoDbo> getUserIdQuery(final String userId) {
-        Assert.isTrue(ObjectId.isValid(userId), "userId is not valid.");
+        Assert.isTrue(StringUtils.hasText(userId), "userId is not valid.");
         Query<OutOfAHatInfoDbo> query = getDatastore().createQuery(OutOfAHatInfoDbo.class);
-        query.field("_id").equal(new ObjectId(userId));
+        query.field("userName").equal(userId);
         return query;
     }
 }

@@ -7,11 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.io.DefaultResourceLoader;
 
 @SpringBootApplication
-@ComponentScan("com.jkg.www.outofahat")
 @EnableAutoConfiguration(exclude = {MongoAutoConfiguration.class})
 public class Starter extends SpringBootServletInitializer {
 
@@ -22,8 +20,8 @@ public class Starter extends SpringBootServletInitializer {
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
         builder
-            .banner(new ResourceBanner(new DefaultResourceLoader().getResource("banner.text")))
-            .sources(Starter.class);
+                .banner(new ResourceBanner(new DefaultResourceLoader().getResource("banner.text")))
+                .sources(Starter.class);
         return builder;
     }
 }

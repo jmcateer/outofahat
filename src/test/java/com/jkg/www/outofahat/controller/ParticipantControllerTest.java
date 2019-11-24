@@ -1,22 +1,5 @@
 package com.jkg.www.outofahat.controller;
 
-import com.jkg.www.outofahat.service.IParticipantService;
-import com.jkg.www.outofahat.service.valueobject.ErrorDetails;
-import com.jkg.www.outofahat.service.valueobject.GenericUserResponse;
-import com.jkg.www.outofahat.service.valueobject.NewParticipantRequest;
-import com.jkg.www.outofahat.service.valueobject.ServiceResponse;
-import com.jkg.www.outofahat.service.valueobject.model.Participant;
-import com.jkg.www.outofahat.testutils.ObjectBuilder;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -25,8 +8,22 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import com.jkg.www.outofahat.service.IParticipantService;
+import com.jkg.www.outofahat.service.valueobject.ErrorDetails;
+import com.jkg.www.outofahat.service.valueobject.NewParticipantRequest;
+import com.jkg.www.outofahat.service.valueobject.ServiceResponse;
+import com.jkg.www.outofahat.testutils.ObjectBuilder;
+import java.util.ArrayList;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
 
 public class ParticipantControllerTest {
+
     private ParticipantController controller;
     @Mock
     private IParticipantService participantService;
@@ -44,7 +41,7 @@ public class ParticipantControllerTest {
         String participantId = "Ron_Weasley";
         String userId = ObjectBuilder.getUserId();
         when(participantService.createParticipant(userId, participantRequest))
-            .thenReturn(ServiceResponse.success(participantId));
+                .thenReturn(ServiceResponse.success(participantId));
 
         ResponseEntity responseEntity = controller.createParticipant(userId, participantRequest);
 
@@ -59,7 +56,7 @@ public class ParticipantControllerTest {
         NewParticipantRequest participantRequest = ObjectBuilder.buildNewParticipantRequest();
         String userId = ObjectBuilder.getUserId();
         when(participantService.createParticipant(userId, participantRequest))
-            .thenReturn(ServiceResponse.failure(new ErrorDetails(42, "doh")));
+                .thenReturn(ServiceResponse.failure(new ErrorDetails(42, "doh")));
 
         ResponseEntity responseEntity = controller.createParticipant(userId, participantRequest);
 
@@ -74,8 +71,7 @@ public class ParticipantControllerTest {
     @Test
     public void test_getUserInfo() {
         String userId = ObjectBuilder.getUserId();
-        GenericUserResponse<List<Participant>> userResponse = new GenericUserResponse<>(userId, new ArrayList<>());
-        when(participantService.getParticipants(userId)).thenReturn(ServiceResponse.success(userResponse));
+        when(participantService.getParticipants(userId)).thenReturn(ServiceResponse.success(new ArrayList<>()));
 
         ResponseEntity responseEntity = controller.getParticipants(userId);
 
@@ -85,8 +81,6 @@ public class ParticipantControllerTest {
         assertNotNull(response);
         assertTrue(response.isSuccessful());
         assertNotNull(response.getValue());
-        assertEquals(userId, ((GenericUserResponse<List<Participant>>) response.getValue()).getUserId());
-        assertNotNull(((GenericUserResponse<List<Participant>>) response.getValue()).getValue());
         verify(participantService, times(1)).getParticipants(userId);
     }
 
@@ -94,7 +88,7 @@ public class ParticipantControllerTest {
     public void test_getUserInfo_fail() {
         String userId = ObjectBuilder.getUserId();
         when(participantService.getParticipants(userId))
-            .thenReturn(ServiceResponse.failure(new ErrorDetails(42, "doh")));
+                .thenReturn(ServiceResponse.failure(new ErrorDetails(42, "doh")));
 
         ResponseEntity responseEntity = controller.getParticipants(userId);
 

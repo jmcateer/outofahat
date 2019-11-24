@@ -13,6 +13,7 @@ import lombok.NonNull;
 @NoArgsConstructor
 @Getter
 public class UserInfo {
+
     @NonNull
     private String userId;
     @NonNull

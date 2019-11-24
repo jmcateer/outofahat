@@ -13,6 +13,7 @@ import org.springframework.util.Assert;
 
 @Service
 public class UserService implements IUserService {
+
     private Logger logger = LoggerFactory.getLogger(UserService.class);
 
     private IUserRepository userRepository;

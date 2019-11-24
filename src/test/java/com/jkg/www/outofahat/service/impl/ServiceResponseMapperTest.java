@@ -1,13 +1,5 @@
 package com.jkg.www.outofahat.service.impl;
 
-import com.jkg.www.outofahat.service.valueobject.ErrorDetails;
-import com.jkg.www.outofahat.service.valueobject.ServiceResponse;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import org.slf4j.Logger;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -16,7 +8,16 @@ import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.verify;
 
+import com.jkg.www.outofahat.service.valueobject.ErrorDetails;
+import com.jkg.www.outofahat.service.valueobject.ServiceResponse;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.slf4j.Logger;
+
 public class ServiceResponseMapperTest {
+
     @Mock
     private Logger logger;
 

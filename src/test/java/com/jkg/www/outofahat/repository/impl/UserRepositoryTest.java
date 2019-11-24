@@ -1,5 +1,14 @@
 package com.jkg.www.outofahat.repository.impl;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.eq;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 import com.jkg.www.outofahat.database.IOutOfAHatInfoConnector;
 import com.jkg.www.outofahat.database.objects.OutOfAHatInfoDbo;
 import com.jkg.www.outofahat.service.valueobject.NewUserRequest;
@@ -10,16 +19,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
 public class UserRepositoryTest {
+
     private final String userId = ObjectBuilder.getUserId();
     private UserRepository repository;
     @Mock

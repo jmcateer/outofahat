@@ -7,6 +7,7 @@ public enum SystemEvent {
 
     PARTICIPANT_ADD_FAIL(2000, "Failed to add participant."),
     PARTICIPANT_RETIRIEVE_FAIL(2001, "Failed to retrieve participants."),
+    PARTICIPANT_UPDATE_FAIL(2002, "Failed to update participant."),
 
     EVENT_CREATE_FAIL(3000, "Failed to create new event."),
     EVENT_SAVE_FAIL(3001, "Failed to save event."),
@@ -15,7 +16,9 @@ public enum SystemEvent {
     private int id;
     private String description;
 
-    private SystemEvent(int id, String description) {
+    private SystemEvent(
+            int id,
+            String description) {
         this.id = id;
         this.description = description;
     }

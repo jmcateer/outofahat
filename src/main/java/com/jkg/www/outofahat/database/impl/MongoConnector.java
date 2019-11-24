@@ -2,9 +2,8 @@ package com.jkg.www.outofahat.database.impl;
 
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
-import org.mongodb.morphia.Datastore;
-import org.mongodb.morphia.Morphia;
-
+import dev.morphia.Datastore;
+import dev.morphia.Morphia;
 import javax.annotation.PostConstruct;
 
 public abstract class MongoConnector<T> {
@@ -19,10 +18,12 @@ public abstract class MongoConnector<T> {
 
     @PostConstruct
     public void setup() {
-        final MongoClientURI mongoClientUri = new MongoClientURI(getUri());
-        final MongoClient mongoClient = new MongoClient(mongoClientUri);
+        MongoClientURI uri = new MongoClientURI(getUri());
+        final MongoClient mongoClient = new MongoClient(uri);
+
         final Morphia morphia = new Morphia();
-        datastore = morphia.mapPackageFromClass(getDboClass()).createDatastore(mongoClient, getDbName());
+        morphia.mapPackageFromClass(getDboClass());
+        datastore = morphia.createDatastore(mongoClient, getDbName());
         datastore.ensureIndexes();
     }
 
