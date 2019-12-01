@@ -21,7 +21,7 @@ public class EmailService {
 
     @Autowired
     public EmailService(JavaMailSender javaMailSender,
-            @Value("${spring.mail.username") String fromEmail) {
+            @Value("${spring.mail.username}") String fromEmail) {
         this.javaMailSender = javaMailSender;
         this.fromEmail = fromEmail;
     }
@@ -30,11 +30,11 @@ public class EmailService {
             ContactInfo contactInfo,
             String assignedTo) {
         String body = generateBody(contactInfo.getFirst(), assignedTo);
-        sendMail(contactInfo.getEmail(), "Ornament Exchange 2019", body);
-        return "Sent";
+        String result = sendMail(contactInfo.getEmail(), "Ornament Exchange 2019", body);
+        return contactInfo.getFirst() + " " + result;
     }
 
-    private void sendMail(
+    private String sendMail(
             String to,
             String subject,
             String body) {
@@ -48,20 +48,23 @@ public class EmailService {
             helper.setTo(to);
             helper.setText(body, false);//true indicates body is html
             javaMailSender.send(message);
+            return "sent";
         } catch (Exception ex) {
             logger.error("email failed for " + to, ex);
+            return ex.getMessage();
         }
     }
 
     private String generateBody(String first, String assignedTo) {
         String template = "Hiya, <person>.\n"
-                + "This is an automated message sent from \"Out of a Hat\" to let you know to whom you will present this"
-                + "year's ornament to. \n"
+                + "This is an automated message sent from \"Out of a Hat\" "
+                + "to let you know to whom you will present this year's ornament to. \n"
                 + "That lucky person is: <to>.\n\n"
                 + "Have a wonderful Christmas!\n\n"
                 + "Yours truly, \n"
-                + "\"Out of a Hat\"";
+                + "\"Out of a Hat\"\n"
+                + "(courtesy of Jeremy)";
 
-        return template.replace("<person>", first).replace("<to>", assignedTo.replace("_", ""));
+        return template.replace("<person>", first).replace("<to>", assignedTo.replace("_", " "));
     }
 }
