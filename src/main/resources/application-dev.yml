@@ -16,5 +16,5 @@ spring:
           auth: true
     host: "smtp.office365.com"
     username: "jmcateer@live.com"
-    password: "Kristina!1"
+    password: "SomeOldPassowrd"
     port: 587
